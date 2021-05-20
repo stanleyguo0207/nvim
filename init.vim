@@ -16,9 +16,9 @@ endif
 let has_default_nvim_configs_file = 1
 if empty(glob('~/.config/nvim/default_nvim_configs.vim'))
 	let has_default_nvim_configs_file = 0
-	silent! exec "!cp ~/.config/nvim/default_configs/default_nvim_configs.vim ~/.config/nvim/default_nvim_configs.vim"
+	silent! exec "!cp ~/.config/nvim/default_configs/default_nvim_configs.vim ~/.config/nvim/__default_nvim_configs.vim"
 endif
-source ~/.config/nvim/default_nvim_configs.vim
+source ~/.config/nvim/__default_nvim_configs.vim
 
 "
 " system
@@ -85,7 +85,17 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 "
 call plug#begin('~/.config/nvim/plugged')
 
-" file
+" File navigation
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+
+" Highlighter
+Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'RRethy/vim-illuminate'
+
+" Completion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Symbols and tags
+Plug 'liuchengxu/vista.vim'
 
 call plug#end()
