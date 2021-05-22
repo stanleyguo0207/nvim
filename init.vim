@@ -11,7 +11,7 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 "
-" Create default_nvim_configs.vim file to make default configs
+" Create __default_nvim_configs.vim file to make default configs
 "
 let has_default_nvim_configs_file = 1
 if empty(glob('~/.config/nvim/default_nvim_configs.vim'))
@@ -97,5 +97,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Symbols and tags
 Plug 'liuchengxu/vista.vim'
+
+" Undo tree
+Plug 'mbbill/undotree'
 
 call plug#end()
