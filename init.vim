@@ -85,20 +85,90 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 "
 call plug#begin('~/.config/nvim/plugged')
 
-" File navigation
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+" Airline
+Plug 'https://gitee.com/stanleyguo0207/vim-airline'
+Plug 'https://gitee.com/stanleyguo0207/vim-airline-themes'
+
+" ScrollStatus
+Plug 'https://gitee.com/stanleyguo0207/vim-scrollstatus'
 
 " Highlighter
-Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
-Plug 'RRethy/vim-illuminate'
+Plug 'https://gitee.com/stanleyguo0207/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'https://gitee.com/stanleyguo0207/vim-illuminate'
 
-" Completion
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" File navigation
+Plug 'https://gitee.com/stanleyguo0207/fzf', { 'do': { -> fzf#install() } }
+Plug 'https://gitee.com/stanleyguo0207/fzf.vim'
+Plug 'https://gitee.com/stanleyguo0207/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+Plug 'https://gitee.com/stanleyguo0207/rnvimr'
+Plug 'https://gitee.com/stanleyguo0207/any-jump.vim'
 
 " Symbols and tags
-Plug 'liuchengxu/vista.vim'
+Plug 'https://gitee.com/stanleyguo0207/vista.vim'
+
+" Completion
+Plug 'https://gitee.com/stanleyguo0207/coc.nvim', {'branch': 'release'}
+Plug 'https://gitee.com/stanleyguo0207/tmux-complete.vim'
 
 " Undo tree
-Plug 'mbbill/undotree'
+Plug 'https://gitee.com/stanleyguo0207/undotree'
+
+" Git
+Plug 'https://gitee.com/stanleyguo0207/vim-gitgutter'
+Plug 'https://gitee.com/stanleyguo0207/agit.vim'
+
+" Autoformat
+Plug 'https://gitee.com/stanleyguo0207/vim-maktaba'
+Plug 'https://gitee.com/stanleyguo0207/vim-codefmt'
+
+" Go
+" Plug 'https://gitee.com/stanleyguo0207/vim-go', { 'do': ':GoUpdateBinaries', 'for': ['go', 'vim-plug'] }
+Plug 'https://gitee.com/stanleyguo0207/vim-go', { 'for': ['go', 'vim-plug'] }
+
+" Python
+Plug 'https://gitee.com/stanleyguo0207/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
+Plug 'https://gitee.com/stanleyguo0207/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
+Plug 'https://gitee.com/stanleyguo0207/braceless.vim', { 'for' :['python', 'vim-plug'] }
+
+" Markdown
+Plug 'https://gitee.com/stanleyguo0207/vim-instant-markdown', {'for': 'markdown'}
+Plug 'https://gitee.com/stanleyguo0207/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
+Plug 'https://gitee.com/stanleyguo0207/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
+Plug 'https://gitee.com/stanleyguo0207/bullets.vim'
+
+" Editor Enhancement
+Plug 'https://gitee.com/stanleyguo0207/auto-pairs.git'
+Plug 'https://gitee.com/stanleyguo0207/vim-visual-multi', {'branch': 'master'}
+Plug 'https://gitee.com/stanleyguo0207/tcomment_vim'
+Plug 'https://gitee.com/stanleyguo0207/vim-surround'
+Plug 'https://gitee.com/stanleyguo0207/wildfire.vim'
+Plug 'https://gitee.com/stanleyguo0207/tabular'
+Plug 'https://gitee.com/stanleyguo0207/vim-easymotion'
+Plug 'https://gitee.com/stanleyguo0207/vim-subversive'
+Plug 'https://gitee.com/stanleyguo0207/indentLine'
+Plug 'https://gitee.com/stanleyguo0207/rainbow'
+Plug 'https://gitee.com/stanleyguo0207/vim-xtabline'
+Plug 'https://gitee.com/stanleyguo0207/vim-devicons'
+
+" Find & Replace
+Plug 'https://gitee.com/stanleyguo0207/far.vim'
+
+" Async
+Plug 'https://gitee.com/stanleyguo0207/asynctasks.vim'
+Plug 'https://gitee.com/stanleyguo0207/asyncrun.vim'
+
+" Applications
+Plug 'https://gitee.com/stanleyguo0207/calendar.vim'
 
 call plug#end()
+
+" vim-scrollstatus
+let g:airline_section_x = '%{ScrollStatus()}'
+let g:airline_section_y = airline#section#create_right(['filetype'])
+let g:airline_section_z = airline#section#create([
+           \ '%#__accent_bold#%3l%#__restore__#/%L', ' ',
+           \ '%#__accent_bold#%3v%#__restore__#/%3{virtcol("$") - 1}',
+           \ ])
+let g:scrollstatus_size = 12
+" let g:scrollstatus_symbol_track = '-'
+" let g:scrollstatus_symbol_bar = '|'
