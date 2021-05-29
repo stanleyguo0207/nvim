@@ -6,7 +6,7 @@
 "
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -19,66 +19,6 @@ if empty(glob('~/.config/nvim/default_nvim_configs.vim'))
 	silent! exec "!cp ~/.config/nvim/default_configs/default_nvim_configs.vim ~/.config/nvim/__default_nvim_configs.vim"
 endif
 source ~/.config/nvim/__default_nvim_configs.vim
-
-"
-" system
-"
-let &t_ut=''
-set autochdir
-
-"
-" editor behavior
-"
-set exrc
-set secure
-set number
-set relativenumber
-set cursorline
-set hidden
-set noexpandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set autoindent
-set list
-set listchars=tab:\|\ ,trail:▫
-set scrolloff=4
-set ttimeoutlen=0
-set notimeout
-set viewoptions=cursor,folds,slash,unix
-set wrap
-set tw=0
-set indentexpr=
-set foldmethod=indent
-set foldlevel=99
-set foldenable
-set formatoptions-=tc
-set splitright
-set splitbelow
-set noshowmode
-set showcmd
-set wildmenu
-set ignorecase
-set smartcase
-set shortmess+=c
-set inccommand=split
-set completeopt=longest,noinsert,menuone,noselect,preview
-set ttyfast
-set lazyredraw
-set visualbell
-silent !mkdir -p ~/.config/nvim/tmp/backup
-silent !mkdir -p ~/.config/nvim/tmp/undo
-set backupdir=~/.config/nvim/tmp/backup,.
-set directory=~/.config/nvim/tmp/backup,.
-if has('persistent_undo')
-	set undofile
-	set undodir=~/.config/nvim/tmp/undo,.
-endif
-set colorcolumn=80
-set updatetime=100
-set virtualedit=block
-
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 "
 " Install plugins with vim-plug
@@ -162,13 +102,138 @@ Plug 'https://gitee.com/stanleyguo0207/calendar.vim'
 
 call plug#end()
 
+"
+" System
+"
+let &t_ut=''
+set autochdir
+
+"
+" Editor Behaviors
+"
+set exrc
+set secure
+set number
+set relativenumber
+set cursorline
+set hidden
+set noexpandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set autoindent
+set list
+set listchars=tab:\|\ ,trail:▫
+set scrolloff=4
+set ttimeoutlen=0
+set notimeout
+set viewoptions=cursor,folds,slash,unix
+set wrap
+set tw=0
+set indentexpr=
+set foldmethod=indent
+set foldlevel=99
+set foldenable
+set formatoptions-=tc
+set splitright
+set splitbelow
+set noshowmode
+set showcmd
+set wildmenu
+set ignorecase
+set smartcase
+set shortmess+=c
+set inccommand=split
+set completeopt=longest,noinsert,menuone,noselect,preview
+set ttyfast
+set lazyredraw
+set visualbell
+silent !mkdir -p ~/.config/nvim/tmp/backup
+silent !mkdir -p ~/.config/nvim/tmp/undo
+set backupdir=~/.config/nvim/tmp/backup,.
+set directory=~/.config/nvim/tmp/backup,.
+if has('persistent_undo')
+	set undofile
+	set undodir=~/.config/nvim/tmp/undo,.
+endif
+set colorcolumn=80
+set updatetime=100
+set virtualedit=block
+
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+"
+" Terminal Behaviors
+"
+let g:neoterm_autoscroll = 1
+autocmd TermOpen term://* startinsert
+tnoremap <C-N> <C-\><C-N>
+tnoremap <C-O> <C-\><C-N><C-O>
+let g:terminal_color_0  = '#000000'
+let g:terminal_color_1  = '#FF5555'
+let g:terminal_color_2  = '#50FA7B'
+let g:terminal_color_3  = '#F1FA8C'
+let g:terminal_color_4  = '#BD93F9'
+let g:terminal_color_5  = '#FF79C6'
+let g:terminal_color_6  = '#8BE9FD'
+let g:terminal_color_7  = '#BFBFBF'
+let g:terminal_color_8  = '#4D4D4D'
+let g:terminal_color_9  = '#FF6E67'
+let g:terminal_color_10 = '#5AF78E'
+let g:terminal_color_11 = '#F4F99D'
+let g:terminal_color_12 = '#CAA9FA'
+let g:terminal_color_13 = '#FF92D0'
+let g:terminal_color_14 = '#9AEDFE'
+
+"
+" Basic Mappings
+" change leader key to space
+"
+let mapleader=" "
+noremap ; :
+noremap Q :q<CR>
+noremap <C-q> :qa<CR>
+noremap S :w<CR>
+
+"
+" Open the vimrc file
+"
+noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
+noremap <LEADER>rv :e .nvimrc<CR>
+
+" Copy till the end of the line
+noremap Y y$
+
+" Copy to system clipboard
+vnoremap Y "+y
+
+" Indentation
+nnoremap < <<
+nnoremap > >>
+
+" Search
+noremap <LEADER><CR> :nohlsearch<CR>
+
+" Adjacent duplicate words
+noremap <LEADER>dw /\(\<\w\+\>\)\_s*\1
+
+" Space to Tab
+nnoremap <LEADER>tt :%s/    /\t/g
+vnoremap <LEADER>tt :s/    /\t/g
+
+" Folding
+noremap <silent> <LEADER>o za
+
+" Cursor Movement
+noremap <silent> \v v$h
+
 " vim-scrollstatus
-let g:airline_section_x = '%{ScrollStatus()}'
-let g:airline_section_y = airline#section#create_right(['filetype'])
-let g:airline_section_z = airline#section#create([
-           \ '%#__accent_bold#%3l%#__restore__#/%L', ' ',
-           \ '%#__accent_bold#%3v%#__restore__#/%3{virtcol("$") - 1}',
-           \ ])
 let g:scrollstatus_size = 12
 " let g:scrollstatus_symbol_track = '-'
 " let g:scrollstatus_symbol_bar = '|'
+let g:airline_section_x = '%{ScrollStatus()}'
+let g:airline_section_y = airline#section#create_right(['filetype'])
+let g:airline_section_z = airline#section#create([
+		\ '%#__accent_bold#%3l%#__restore__#/%L', ' ',
+		\ '%#__accent_bold#%3v%#__restore__#/%3{virtcol("$") - 1}',
+		\ ])
