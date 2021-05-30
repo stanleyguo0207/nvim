@@ -25,6 +25,9 @@ source ~/.config/nvim/__default_nvim_configs.vim
 "
 call plug#begin('~/.config/nvim/plugged')
 
+" themes
+Plug 'dracula/vim', { 'as': 'dracula' }
+
 " Airline
 Plug 'https://gitee.com/stanleyguo0207/vim-airline'
 Plug 'https://gitee.com/stanleyguo0207/vim-airline-themes'
@@ -159,6 +162,12 @@ endif
 set colorcolumn=80
 set updatetime=100
 set virtualedit=block
+set lazyredraw
+set regexpengine=0
+set termguicolors
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+colorscheme dracula
+hi NonText ctermfg=gray guifg=grey10
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
@@ -224,8 +233,158 @@ vnoremap <LEADER>tt :s/    /\t/g
 " Folding
 noremap <silent> <LEADER>o za
 
+"
 " Cursor Movement
+"
+
+" visual mode to end of line
 noremap <silent> \v v$h
+
+" insert mode to end of line
+inoremap <C-a> <Esc>A
+
+" Searching
+noremap - N
+noremap = n
+
+"
+" Window management
+"
+noremap <LEADER>w <C-w>w
+noremap <LEADER>u <C-w>k
+noremap <LEADER>e <C-w>j
+noremap <LEADER>n <C-w>h
+noremap <LEADER>i <C-w>l
+noremap qf <C-w>o
+
+" Disable the default s key
+" noremap s <nop>
+
+" Split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
+noremap <LEADER>su :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+noremap <LEADER>se :set splitbelow<CR>:split<CR>
+noremap <LEADER>sn :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
+noremap <LEADER>si :set splitright<CR>:vsplit<CR>
+
+" Resize splits with arrow keys
+noremap <up> :res +5<CR>
+noremap <down> :res -5<CR>
+noremap <left> :vertical resize-5<CR>
+noremap <right> :vertical resize+5<CR>
+
+" Place the two screens up and down
+noremap <LEADER>sh <C-w>t<C-w>K
+" Place the two screens side by side
+noremap <LEADER>sv <C-w>t<C-w>H
+
+" Rotate screens
+noremap <LEADER>srh <C-w>b<C-w>K
+noremap <LEADER>srv <C-w>b<C-w>H
+
+" Close the window below the current window
+noremap <LEADER>q <C-w>j:q<CR>
+
+"
+" Tab management
+"
+" Create a new tab with tu
+noremap tu :tabe<CR>
+" Move around tabs with tn and ti
+noremap tn :-tabnext<CR>
+noremap ti :+tabnext<CR>
+" Move the tabs with tmn and tmi
+noremap tmn :-tabmove<CR>
+noremap tmi :+tabmove<CR>
+
+"
+" Markdown Settings
+"
+source ~/.config/nvim/vim/snippets_markdown.vim
+autocmd BufRead,BufNewFile *.md setlocal spell
+
+" Open a new instance of the cwd
+nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
+
+" Opening a terminal window
+noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
+
+" Jump to next '<++>' and edit it
+noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c41
+
+" Spelling Check
+noremap <LEADER>sc :set spell!<CR>
+
+noremap ` ~
+
+noremap <C-c> zz
+
+" Auto change directory to current dir
+autocmd BufEnter * silent! lcd %:p:h
+
+" Call figlet
+noremap tx :r !figlet
+
+" Find and replace
+noremap \s :%s///g<left><left><left>
+
+" Set wrap
+noremap <LEADER>sw :set wrap<CR>
+
+" Show hlgroup
+function! SynGroup()
+	let l:s = synID(line('.'), col('.'), 1)
+	echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+endfun
+map <F10> :call SynGroup()<CR>
+
+" Compile function
+noremap r :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+	exec "w"
+	if &filetype == 'c'
+		exec "!g++ % -o %<"
+		exec "!time ./%<"
+	elseif &filetype == 'cpp'
+		set splitbelow
+		exec "!g++ -std=c++17 % -Wall -o %<"
+		:sp
+		:res -15
+		:term ./%<
+	elseif &filetype == 'java'
+		set splitbelow
+		:sp
+		:res -5
+		term javac % && time java %<
+	elseif &filetype == 'sh'
+		:!time bash %
+	elseif &filetype == 'python'
+		set splitbelow
+		:sp
+		:term python3 %
+	elseif &filetype == 'html'
+		silent! exec "!".g:mkdp_browser." % &"
+	elseif &filetype == 'markdown'
+		exec "InstantMarkdownPreview"
+	elseif &filetype == 'tex'
+		silent! exec "VimtexStop"
+		silent! exec "VimtexCompile"
+	elseif &filetype == 'dart'
+		exec "CocCommand flutter.run -d ".g:flutter_default_device." ".g:flutter_run_args
+		silent! exec "CocCommand flutter.dev.openDevLog"
+	elseif &filetype == 'javascript'
+		set splitbelow
+		:sp
+		:term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
+	elseif &filetype == 'go'
+		set splitbelow
+		:sp
+		:term go run .
+	endif
+endfunc
+
+"
+" Plug Settings
+"
 
 " vim-scrollstatus
 let g:scrollstatus_size = 12
