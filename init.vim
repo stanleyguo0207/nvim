@@ -331,7 +331,7 @@ noremap \s :%s///g<left><left><left>
 noremap <LEADER>sw :set wrap<CR>
 
 " Show hlgroup
-function! SynGroup()
+func! SynGroup()
 	let l:s = synID(line('.'), col('.'), 1)
 	echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
 endfun
@@ -386,13 +386,125 @@ endfunc
 " Plug Settings
 "
 
-" vim-scrollstatus
-let g:scrollstatus_size = 12
-" let g:scrollstatus_symbol_track = '-'
-" let g:scrollstatus_symbol_bar = '|'
+" vim-airline
 let g:airline_section_x = '%{ScrollStatus()}'
 let g:airline_section_y = airline#section#create_right(['filetype'])
 let g:airline_section_z = airline#section#create([
 		\ '%#__accent_bold#%3l%#__restore__#/%L', ' ',
 		\ '%#__accent_bold#%3v%#__restore__#/%3{virtcol("$") - 1}',
 		\ ])
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" vim-scrollstatus
+let g:scrollstatus_size = 12
+" let g:scrollstatus_symbol_track = '-'
+" let g:scrollstatus_symbol_bar = '|'
+
+" vim-hexokinase
+let g:Hexokinase_highlighters = [
+	"\ 'virtual',
+	\ 'foregroundfull',
+	\ ]
+
+" vim-illuminate
+let g:Illuminate_delay = 750
+hi illuminatedWord cterm=undercurl gui=undercurl
+
+" fzf
+set rtp+=/usr/share/fzf
+noremap <silent> <C-f> :Rg<CR>
+noremap <silent> <C-h> :History<CR>
+noremap <LEADER>; :History<CR>
+noremap <silent> <C-w> :Buffers<CR>
+
+let g:fzf_preview_window = 'right:60%'
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
+
+func! s:list_buffers()
+  redir => list
+  silent ls
+  redir END
+  return split(list, "\n")
+endfunc
+
+func! s:delete_buffers(lines)
+  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
+endfunc
+
+command! BD call fzf#run(fzf#wrap({
+	\ 'source': s:list_buffers(),
+	\ 'sink*': { lines -> s:delete_buffers(lines) },
+	\ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+	\ }))
+
+noremap <C-d> :BD<CR>
+
+" LeaderF
+let g:Lf_PreviewInPopup = 1
+let g:Lf_PreviewCode = 1
+let g:Lf_ShowHidden = 1
+let g:Lf_ShowDevIcons = 1
+nnoremap <C-p> :Leaderf file<CR>
+
+" rnvimr
+let g:rnvimr_enable_ex = 1
+let g:rnvimr_enable_picker = 1
+let g:rnvimr_draw_border = 0
+let g:rnvimr_border_attr = {'fg': 14, 'bg': -1}
+let g:rnvimr_shadow_winblend = 70
+let g:rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
+highlight link RnvimrNormal CursorLine
+nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+let g:rnvimr_action = {
+	\ '<C-t>': 'NvimEdit tabedit',
+	\ '<C-x>': 'NvimEdit split',
+	\ '<C-v>': 'NvimEdit vsplit',
+	\ 'gw': 'JumpNvimCwd',
+	\ 'yw': 'EmitRangerCwd'
+	\ }
+let g:rnvimr_layout = { 'relative': 'editor',
+	\ 'width': &columns,
+	\ 'height': &lines,
+	\ 'col': 0,
+	\ 'row': 0,
+	\ 'style': 'minimal' }
+let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
+
+" any-jump
+nnoremap <LEADER>j :AnyJump<CR>
+nnoremap <LEADER>b :AnyJumpBack<CR>
+let g:any_jump_window_width_ratio  = 0.8
+let g:any_jump_window_height_ratio = 0.9
+let g:any_jump_disable_default_keybindings = 1
+
+" vista
+noremap <LEADER>v :Vista!!<CR>
+noremap <C-t> :silent! Vista finder coc<CR>
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista_default_executive = 'coc'
+let g:vista_fzf_preview = ['right:50%']
+let g:vista#renderer#enable_icon = 1
+let g:vista#renderer#icons = {
+	\ "function": "\uf794",
+	\ "variable": "\uf71b",
+	\ }
+
+" coc
+inoremap <silent><expr> <TAB>
+	\ pumvisible() ? "\<C-n>" :
+	\ <SID>check_back_space() ? "\<TAB>" :
+	\ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+func! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunc
+inoremap <silent><expr> <C-space> coc#refresh()
+inoremap <silent><expr> <C-j> coc#refresh()
+
+nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
+nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
+
