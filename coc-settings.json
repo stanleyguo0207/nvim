@@ -5,10 +5,31 @@
 			"filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
 			"rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
 			"initializationOptions": {
-					"cache": {
-						"directory": "/tmp/ccls"
-					}
+				"cache": {
+					"directory": "/tmp/ccls"
+				},
+				"clang": {
+					"extraArgs": [
+						"-std=c++17"
+					]
 				}
-		}
+			}
+		},
+		"bash": {
+			"command": "bash-language-server",
+			"args": ["start"],
+			"filetypes": ["sh"],
+			"ignoredRootPaths": []
+		},
+		"cmake": {
+      "command": "cmake-language-server",
+      "filetypes": ["cmake"],
+      "rootPatterns": [
+        "build/"
+      ],
+      "initializationOptions": {
+        "buildDirectory": "build"
+      }
+    }
 	}
 }
