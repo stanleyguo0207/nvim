@@ -471,7 +471,7 @@ let g:rnvimr_layout = { 'relative': 'editor',
 	\ 'col': 0,
 	\ 'row': 0,
 	\ 'style': 'minimal' }
-let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
+let g:rnvimr_presets = [{'width': 0.800, 'height': 0.600}]
 
 " any-jump
 nnoremap <LEADER>j :AnyJump<CR>
@@ -493,6 +493,9 @@ let g:vista#renderer#icons = {
 	\ }
 
 " coc
+let g:coc_global_extensions = [
+	\ 'coc-json',
+	\ 'coc-git']
 inoremap <silent><expr> <TAB>
 	\ pumvisible() ? "\<C-n>" :
 	\ <SID>check_back_space() ? "\<TAB>" :
