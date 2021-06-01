@@ -14,7 +14,7 @@ endif
 " Create __default_nvim_configs.vim file to make default configs
 "
 let has_default_nvim_configs_file = 1
-if empty(glob('~/.config/nvim/default_nvim_configs.vim'))
+if empty(glob('~/.config/nvim/__default_nvim_configs.vim'))
 	let has_default_nvim_configs_file = 0
 	silent! exec "!cp ~/.config/nvim/default_configs/default_nvim_configs.vim ~/.config/nvim/__default_nvim_configs.vim"
 endif
@@ -53,6 +53,9 @@ Plug 'https://gitee.com/stanleyguo0207/vista.vim'
 Plug 'https://gitee.com/stanleyguo0207/coc.nvim', {'branch': 'release'}
 Plug 'https://gitee.com/stanleyguo0207/tmux-complete.vim'
 
+" Snippet
+Plug 'https://gitee.com/stanleyguo0207/ultisnips'
+
 " Undo tree
 Plug 'https://gitee.com/stanleyguo0207/undotree'
 
@@ -80,7 +83,7 @@ Plug 'https://gitee.com/stanleyguo0207/vim-markdown-toc', { 'for': ['gitignore',
 Plug 'https://gitee.com/stanleyguo0207/bullets.vim'
 
 " Editor Enhancement
-Plug 'https://gitee.com/stanleyguo0207/auto-pairs.git'
+Plug 'https://gitee.com/stanleyguo0207/auto-pairs'
 Plug 'https://gitee.com/stanleyguo0207/vim-visual-multi', {'branch': 'master'}
 Plug 'https://gitee.com/stanleyguo0207/tcomment_vim'
 Plug 'https://gitee.com/stanleyguo0207/vim-surround'
@@ -288,7 +291,7 @@ noremap <LEADER>srh <C-w>b<C-w>K
 noremap <LEADER>srv <C-w>b<C-w>H
 
 " Close the window below the current window
-noremap <LEADER>q <C-w>j:q<CR>
+" noremap <LEADER>q <C-w>j:q<CR>
 
 "
 " Tab management
@@ -498,9 +501,12 @@ let g:vista#renderer#icons = {
 	\ "variable": "\uf71b",
 	\ }
 
-" coc
+" coc.nvim
 let g:coc_global_extensions = [
 	\ 'coc-json',
+	\ 'coc-explorer',
+	\ 'coc-translator',
+	\ 'coc-snippets',
 	\ 'coc-git']
 inoremap <silent><expr> <TAB>
 	\ pumvisible() ? "\<C-n>" :
@@ -529,6 +535,7 @@ func! s:show_documentation()
   endif
 endfunc
 
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
 nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
 nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
 
@@ -541,13 +548,14 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 nmap <LEADER>rn <Plug>(coc-rename)
 
-xmap <LEADER>f  <Plug>(coc-format-selected)
-nmap <LEADER>f  <Plug>(coc-format-selected)
+" xmap <LEADER>f  <Plug>(coc-format-selected)
+" nmap <LEADER>f  <Plug>(coc-format-selected)
 
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>qf  <Plug>(coc-fix-current)
 
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
@@ -558,12 +566,210 @@ omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
 
+"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+"let g:airline#extensions#coc#enabled = 1
+"let airline#extensions#coc#error_symbol = 'Error:'
+"let airline#extensions#coc#warning_symbol = 'Warning:'
+"let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
+"let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
+
+" coc-explorer
+nmap tt :CocCommand explorer<CR>
+" coc-translator
+nmap ts <Plug>(coc-translator-p)
+" coc-snippets
+imap <C-l> <Plug>(coc-snippets-expand)
+vmap <C-e> <Plug>(coc-snippets-select)
+let g:coc_snippet_next = "<c-e>"
+let g:coc_snippet_prev = "<c-n>"
+imap <C-e> <Plug>(coc-snippets-expand-jump)
+let g:snips_author = "stanleyguo0207"
+
+" ultisnips
+let g:tex_flavor = "latex"
+inoremap <c-n> <nop>
+let g:UltiSnipsExpandTrigger = "<c-e>"
+let g:UltiSnipsJumpForwardTrigger = "<c-e>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-n>"
+let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/ultisnips/']
+silent! au BufEnter,BufRead,BufNewFile * silent! unmap <c-r>
+
+" undotree
+noremap L :UndotreeToggle<CR>
+let g:undotree_DiffAutoOpen = 1
+let g:undotree_SetFocusWhenToggle = 1
+let g:undotree_ShortIndicators = 1
+let g:undotree_WindowLayout = 2
+let g:undotree_DiffpanelHeight = 8
+let g:undotree_SplitWidth = 24
+func g:Undotree_CustomMap()
+	nmap <buffer> u <plug>UndotreeNextState
+	nmap <buffer> e <plug>UndotreePreviousState
+	nmap <buffer> U 5<plug>UndotreeNextState
+	nmap <buffer> E 5<plug>UndotreePreviousState
+endfunc
+
+" agit
+nnoremap <LEADER>gl :Agit<CR>
+let g:agit_no_default_mappings = 1
+
+" vim-maktaba vim-codefmt
+augroup autoformat_settings
+  " autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
+  " autocmd FileType dart AutoFormatBuffer dartfmt
+  " autocmd FileType go AutoFormatBuffer gofmt
+  " autocmd FileType gn AutoFormatBuffer gn
+  " autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+  " autocmd FileType java AutoFormatBuffer google-java-format
+  " autocmd FileType python AutoFormatBuffer yapf
+  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+  " autocmd FileType rust AutoFormatBuffer rustfmt
+  " autocmd FileType vue AutoFormatBuffer prettier
+augroup END
+
+" vim-go
+let g:go_echo_go_info = 0
+let g:go_doc_popup_window = 1
+let g:go_def_mapping_enabled = 0
+let g:go_template_autocreate = 0
+let g:go_textobj_enabled = 0
+let g:go_auto_type_info = 1
+let g:go_def_mapping_enabled = 0
+let g:go_highlight_array_whitespace_error = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_chan_whitespace_error = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_format_strings = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_space_tab_error = 1
+let g:go_highlight_string_spellcheck = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_trailing_whitespace_error = 1
+let g:go_highlight_types = 1
+let g:go_highlight_variable_assignments = 0
+let g:go_highlight_variable_declarations = 0
+let g:go_doc_keywordprg_enabled = 0
+
+" vim-instant-markdown
+let g:instant_markdown_slow = 0
+let g:instant_markdown_autostart = 0
+let g:instant_markdown_autoscroll = 1
+
+" vim-table-mode
+noremap <LEADER>tm :TableModeToggle<CR>
+let g:table_mode_cell_text_object_i_map = 'k<Bar>'
+
+" vim-markdown-toc
+let g:vmt_cycle_list_item_markers = 1
+let g:vmt_fence_text = 'TOC'
+let g:vmt_fence_closing_text = '/TOC'
+
+" Bullets.vim
+let g:bullets_enabled_file_types = [
+	\ 'markdown',
+	\ 'text',
+	\ 'gitcommit',
+	\ 'scratch'
+	\]
+
+" vim-visual-multi
+let g:VM_leader = {'default': ',', 'visual': ',', 'buffer': ','}
+let g:VM_maps = {}
+let g:VM_custom_motions = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'N': '0', 'I': '$', 'h': 'e'}
+let g:VM_maps['i'] = 'k'
+let g:VM_maps['I'] = 'K'
+let g:VM_maps['Find Under'] = '<C-k>'
+let g:VM_maps['Find Subword Under'] = '<C-k>'
+let g:VM_maps['Find Next'] = ''
+let g:VM_maps['Find Prev'] = ''
+let g:VM_maps['Remove Region'] = 'q'
+let g:VM_maps['Skip Region'] = '<C-n>'
+let g:VM_maps["Undo"] = 'l'
+let g:VM_maps["Redo"] = '<C-r>'
+
+" tcomment_vim
+nnoremap ci cl
+let g:tcomment_textobject_inlinecomment = ''
+nmap <LEADER>cn g>c
+vmap <LEADER>cn g>
+nmap <LEADER>cu g<c
+vmap <LEADER>cu g<
+
+" vim-surround
+" cs"'
+
+" wildfire.vim
+" in Visual mode, type i' to select all text in '', or type i) i] i} ip
+
+" tabular
+vmap ga :Tabularize /
+
+" vim-easymotion
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_do_shade = 0
+let g:EasyMotion_smartcase = 1
+
+" vim-subversive
+
+" rainbow
+let g:rainbow_active = 1
+
+" xtabline
+let g:xtabline_settings = {}
+let g:xtabline_settings.enable_mappings = 0
+let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
+let g:xtabline_settings.enable_persistance = 0
+let g:xtabline_settings.last_open_first = 1
+noremap to :XTabCycleMode<CR>
+noremap \p :echo expand('%:p')<CR>
+
+" far.nvim
+noremap <LEADER>f :F  **/*<left><left><left><left><left>
+let g:far#mapping = {
+	\ "replace_undo" : ["l"],
+	\ }
+
+" asynctasks
+let g:asyncrun_open = 6
+
+" asyncrun
+noremap gp :AsyncRun git push<CR>
+
+" vim-calendar
+noremap \\ :Calendar -view=clock -position=here<CR>
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
+augroup calendar-mappings
+	autocmd!
+	" diamond cursor
+	autocmd FileType calendar nmap <buffer> u <Plug>(calendar_up)
+	autocmd FileType calendar nmap <buffer> n <Plug>(calendar_left)
+	autocmd FileType calendar nmap <buffer> e <Plug>(calendar_down)
+	autocmd FileType calendar nmap <buffer> i <Plug>(calendar_right)
+	autocmd FileType calendar nmap <buffer> <C-u> <Plug>(calendar_move_up)
+	autocmd FileType calendar nmap <buffer> <C-n> <Plug>(calendar_move_left)
+	autocmd FileType calendar nmap <buffer> <C-e> <Plug>(calendar_move_down)
+	autocmd FileType calendar nmap <buffer> <C-i> <Plug>(calendar_move_right)
+	autocmd FileType calendar nmap <buffer> k <Plug>(calendar_start_insert)
+	autocmd FileType calendar nmap <buffer> K <Plug>(calendar_start_insert_head)
+	" unmap <C-n>, <C-p> for other plugins
+	autocmd FileType calendar nunmap <buffer> <C-n>
+	autocmd FileType calendar nunmap <buffer> <C-p>
+augroup END
+
+" open 
+exec "nohlsearch"
+
+if has_default_nvim_configs_file == 0
+	exec "e ~/.config/nvim/__default_nvim_configs.vim"
+endif
