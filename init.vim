@@ -276,10 +276,10 @@ noremap <LEADER>sn :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
 noremap <LEADER>si :set splitright<CR>:vsplit<CR>
 
 " Resize splits with arrow keys
-noremap <up> :res +5<CR>
-noremap <down> :res -5<CR>
-noremap <left> :vertical resize-5<CR>
-noremap <right> :vertical resize+5<CR>
+noremap <UP> :res +5<CR>
+noremap <DOWN> :res -5<CR>
+noremap <LEFT> :vertical resize-5<CR>
+noremap <RIGHT> :vertical resize+5<CR>
 
 " Place the two screens up and down
 noremap <LEADER>sh <C-w>t<C-w>K
