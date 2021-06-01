@@ -312,13 +312,13 @@ source ~/.config/nvim/vim/snippets_markdown.vim
 autocmd BufRead,BufNewFile *.md setlocal spell
 
 " Open a new instance of the cwd
-nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
+" nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
 
 " Opening a terminal window
 noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
 
 " Jump to next '<++>' and edit it
-noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c41
+noremap <LEADER>x <Esc>/<++><CR>:nohlsearch<CR>c41
 
 " Spelling Check
 noremap <LEADER>sc :set spell!<CR>
@@ -335,9 +335,6 @@ noremap tx :r !figlet
 
 " Find and replace
 noremap \s :%s///g<left><left><left>
-
-" Set wrap
-noremap <LEADER>sw :set wrap<CR>
 
 " Show hlgroup
 func! SynGroup()
@@ -517,10 +514,9 @@ func! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunc
-inoremap <silent><expr> <C-space> coc#refresh()
-inoremap <silent><expr> <C-j> coc#refresh()
+inoremap <silent><expr> <C-o> coc#refresh()
 
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm()
 	\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -535,11 +531,12 @@ func! s:show_documentation()
   endif
 endfunc
 
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <LEADER>d  :<C-u>CocList diagnostics<CR>
 nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
 nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
 
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gD :tab sp<CR><Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -551,11 +548,11 @@ nmap <LEADER>rn <Plug>(coc-rename)
 " xmap <LEADER>f  <Plug>(coc-format-selected)
 " nmap <LEADER>f  <Plug>(coc-format-selected)
 
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+xmap <LEADER>a  <Plug>(coc-codeaction-selected)
+nmap <LEADER>a  <Plug>(coc-codeaction-selected)
 
-nmap <leader>ac  <Plug>(coc-codeaction)
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <LEADER>ac  <Plug>(coc-codeaction)
+nmap <LEADER>qf  <Plug>(coc-fix-current)
 
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
@@ -583,17 +580,17 @@ nmap ts <Plug>(coc-translator-p)
 " coc-snippets
 imap <C-l> <Plug>(coc-snippets-expand)
 vmap <C-e> <Plug>(coc-snippets-select)
-let g:coc_snippet_next = "<c-e>"
-let g:coc_snippet_prev = "<c-n>"
+let g:coc_snippet_next = "<C-e>"
+let g:coc_snippet_prev = "<C-n>"
 imap <C-e> <Plug>(coc-snippets-expand-jump)
 let g:snips_author = "stanleyguo0207"
 
 " ultisnips
 let g:tex_flavor = "latex"
-inoremap <c-n> <nop>
-let g:UltiSnipsExpandTrigger = "<c-e>"
-let g:UltiSnipsJumpForwardTrigger = "<c-e>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-n>"
+inoremap <C-n> <nop>
+let g:UltiSnipsExpandTrigger = "<C-e>"
+let g:UltiSnipsJumpForwardTrigger = "<C-e>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-n>"
 let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/ultisnips/']
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap <c-r>
 
