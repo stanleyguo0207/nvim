@@ -168,20 +168,25 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 |        **`**         | 大小写转换                               |                                 **~**                                  |
 |        **r**         | 运行当前文件                             |                    **:call CompileRunGcc()\<CR\>**                     |
 |        **R**         | **\<silent\>** `rnvim` 打开`Ranger`      |      **:RnvimrToggle\<CR\>\<C-\\\>\<C-n\>:RnvimrResize 0\<CR\>**       |
-|      **\<UP\>**      | 屏幕向上移动5个单位                      |                           **:res +5\<CR\>**                            |
-|     **\<DOWN\>**     | 屏幕向下移动5个单位                      |                           **:res -5\<CR\>**                            |
-|     **\<LEFT\>**     | 屏幕向左移动5个单位                      |                      **:vertical resize-5\<CR\>**                      |
-|    **\<RIGHT\>**     | 屏幕向右移动5个单位                      |                      **:vertical resize+5\<CR\>**                      |
-|     **\<F10\>**      |                                          |                       **:call SynGroup()\<CR\>**                       |
+|        **L**         | `undotree` 打开undo列表                  |                       **:UndotreeToggle\<CR\>**                        |
 |        **tu**        | 创建一个buffer                           |                            **:tabe\<CR\>**                             |
 |        **tn**        | 切换左buffer                             |                          **:-tabenext\<CR\>**                          |
 |        **ti**        | 切换右buffer                             |                          **:+tabenext\<CR\>**                          |
 |       **tmn**        | buffer移动到左                           |                          **:-tabemove\<CR\>**                          |
 |       **tmi**        | buffer移动到右                           |                          **:+tabemove\<CR\>**                          |
 |        **tx**        | 将输入转为字符画输出                     |                             **:r !figlet**                             |
+|        **to**        | `xtabline`                               |                        **:XTabCycleMode\<CR\>**                        |
+|        **gp**        | `asyncrun` 异步提交到git                 |                      **:AsyncRun git push\<CR\>**                      |
+|      **\<UP\>**      | 屏幕向上移动5个单位                      |                           **:res +5\<CR\>**                            |
+|     **\<DOWN\>**     | 屏幕向下移动5个单位                      |                           **:res -5\<CR\>**                            |
+|     **\<LEFT\>**     | 屏幕向左移动5个单位                      |                      **:vertical resize-5\<CR\>**                      |
+|    **\<RIGHT\>**     | 屏幕向右移动5个单位                      |                      **:vertical resize+5\<CR\>**                      |
+|     **\<F10\>**      |                                          |                       **:call SynGroup()\<CR\>**                       |
 |       **\\v**        | **\<silent\>** **visual** 模式选中到行尾 |                                **v$h**                                 |
 |       **\\t**        | 打开一个新的`cwd`实例                    | **:tabe\<CR\>:-tabmove\<CR\>:term sh -c 'st'\<CR\><C-\><C-N>:q\<CR\>** |
 |       **\\s**        | 全局查找替换                             |                  **:%s///g\<left\>\<left\>\<left\>**                   |
+|       **\\p**        | `xtabline`                               |                     **:echo expand('%:p')\<CR\>**                      |
+|       **\\\\**       | `vim-calendar` 显示当前时间              |             **:Calendar -view=clock -position=here\<CR\>**             |
 |     **\<C-p\>**      | `LeaderF` 查找文件                       |                        **:Leaderf file\<CR\>**                         |
 |     **\<C-q\>**      | 关闭所有buffer                           |                                 **:**                                  |
 |     **\<C-c\>**      | 屏幕居中到当前行                         |                                 **zz**                                 |
@@ -216,6 +221,7 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 |   **\<LEADER\>j**    | `any-jump` 跳转                          |                           **:AnyJump\<CR\>**                           |
 |   **\<LEADER\>b**    | `any-jump` 回跳                          |                         **:AnyJumpBack\<CR\>**                         |
 |   **\<LEADER\>v**    | `vista` 侧面打开函数列表                 |                           **:Vista!!\<CR\>**                           |
+|   **\<LEADER\>tm**   | `vim-table-mode` 触发表格                |                       **:TableModeToggle\<CR\>**                       |
 
 **nmap**
 |     映射键位     | 效果说明                         |                 原始键位                  |
@@ -227,6 +233,10 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 |      **gr**      | `coc` 跳转引用                   |       **\<Plug\>(coc-references)**        |
 |      **tt**      | `coc` 文件浏览                   |      **:CocCommand explorer\<CR\>**       |
 |      **ts**      | `coc` 翻译                       |      **\<Plug\>(coc-translator-p)**       |
+|      **u**       | **\<buffer\>** `undotree` 翻译   |       **\<Plug\>UndotreeNextState**       |
+|      **e**       | **\<buffer\>** `undotree` 翻译   |    **5\<Plug\>UndotreePreviousState**     |
+|      **U**       | **\<buffer\>** `undotree` 翻译   |       **\<Plug\>UndotreeNextState**       |
+|      **E**       | **\<buffer\>** `undotree` 翻译   |    **5\<Plug\>UndotreePreviousState**     |
 |   **\<C-s\>**    | `coc`                            |      **\<Plug\>(coc-range-select)**       |
 | **\<LEADER\>-**  | `coc` 诊断错误位置向前           |     **\<Plug\>(coc-diagnostic-prev)**     |
 | **\<LEADER\>=**  | `coc` 诊断错误位置向后           |     **\<Plug\>(coc-diagnostic-next)**     |
@@ -234,6 +244,8 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 | **\<LEADER\>a**  | `coc` 代码操作选中部分           |   **\<Plug\>(coc-codeaction-selected)**   |
 | **\<LEADER\>ac** | `coc` 代码操作提示               |       **\<Plug\>(coc-codeaction)**        |
 | **\<LEADER\>qf** | `coc` 修复当前                   |       **\<Plug\>(coc-fix-current)**       |
+| **\<LEADER\>cn** | `tcomment_vim` 注释              |                  **g>c**                  |
+| **\<LEADER\>cu** | `tcomment_vim` 反注释            |                  **g<c**                  |
 
 **xmap**
 |    映射键位     | 效果说明               |               原始键位                |
@@ -260,9 +272,12 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 | **\<C-e\>** | `coc` 插入代码片段跳转 | **\<Plug\>(coc-snippets-expand-jump)** |
 
 **vmap**
-|  映射键位   | 效果说明           |             原始键位              |
-| :---------: | :----------------- | :-------------------------------: |
-| **\<C-e\>** | `coc` 选择代码片段 | **\<Plug\>(coc-snippets-select)** |
+|     映射键位     | 效果说明                           |             原始键位              |
+| :--------------: | :--------------------------------- | :-------------------------------: |
+|      **ga**      | `tabular` 按照指定字符重新排列代码 |         **:Tabularize /**         |
+|   **\<C-e\>**    | `coc` 选择代码片段                 | **\<Plug\>(coc-snippets-select)** |
+| **\<LEADER\>cn** | `tcomment_vim` 注释                |              **g>**               |
+| **\<LEADER\>cu** | `tcomment_vim` 反注释              |              **g<**               |
 
 **nnoremap**
 |     映射键位     | 效果说明                                    |                  原始键位                   |
@@ -270,8 +285,10 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 |      **<**       | 向左移动 **\<TAB\>**                        |                   **<<**                    |
 |      **>**       | 向右移动 **\<TAB\>**                        |                   **>>**                    |
 |      **K**       | **\<silent\>** `coc` 查看文档               | **:call \<SID\>show_documentation()\<CR\>** |
+|      **ci**      | `tcomment_vim` 注释                         |                   **cl**                    |
 | **\<LEADER\>tt** | 空格替换为`Tab`                             |             **:%s/    /\\t/g**              |
 | **\<LEADER\>d**  | **\<silent\>\<nowait\>** `coc` 诊断错误列表 |    **:\<C-u\>CocList diagnostics\<CR\>**    |
+| **\<LEADER\>gl** | `agit` 打开git仓库                          |               **:Agit\<CR\>**               |
 
 **inoremap**
 |   映射键位    | 效果说明                                  |     原始键位      |
