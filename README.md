@@ -217,7 +217,7 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 |      **\<LEADER\>fb**       | **noremap**  |      `fzf`       | 显示打开的缓冲区             |                     **\<silent\> :Buffers\<CR\>**                      |
 |      **\<LEADER\>fd**       | **noremap**  |      `fzf`       | 显示打开的缓冲区选择要关闭的 |                             **:BD\<CR\>**                              |
 |      **\<LEADER\>fh**       | **noremap**  |      `fzf`       | 历史记录                     |                     **\<silent\> :History\<CR\>**                      |
-|      **\<LEADER\>fr**       | **noremap**  |      `fzf`       | 查找替换                     |        **:F  \*\*/\*\<left\>\<left\>\<left\>\<left\>\<left\>**         |
+|      **\<LEADER\>fr**       | **noremap**  |      `far`       | 查找替换                     |        **:F  \*\*/\*\<left\>\<left\>\<left\>\<left\>\<left\>**         |
 |      **\<LEADER\>pp**       | **noremap**  |     `print`      | 打印当前文件路径             |                     **:echo expand('%:p')\<CR\>**                      |
 |      **\<LEADER\>vl**       | **noremap**  |     `vista`      | 侧面打开函数列表             |                           **:Vista!!\<CR\>**                           |
 |      **\<LEADER\>ss**       | **nmap**     |   `Subversive`   |                              |                   **\<plug\>(SubversiveSubstitute)**                   |
