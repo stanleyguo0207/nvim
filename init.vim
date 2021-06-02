@@ -205,19 +205,41 @@ let g:terminal_color_14 = '#9AEDFE'
 
 "
 " Basic Mappings
-" change leader key to space
 "
-let mapleader=" "
+
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
+
+" Enter Command-line mode
 noremap ; :
+" Shutdown current buffer
 noremap Q :q<CR>
-noremap <C-q> :qa<CR>
+" Save current buffer
 noremap S :w<CR>
 
 "
-" Open the vimrc file
+" Buffer
 "
-noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
-noremap <LEADER>rv :e .nvimrc<CR>
+
+" Shutdown current buffer
+noremap <LEADER>bq :q<CR>
+" Shutdown all buffer
+noremap <LEADER>bQ :qa<CR>
+" Save current buffer
+noremap <LEADER>bs :w<CR>
+" Shutdown all buffer exclude first buffer
+noremap <LEADER>bf <C-w>o
+
+"
+" Vimrc config
+"
+
+" Source init.vim
+noremap <LEADER><LEADER>sr :source ~/.config/nvim/init.vim<CR>
+" Edit init.vim
+noremap <LEADER><LEADER>er :e ~/.config/nvim/init.vim<CR>
+" Create .nvimrc
+noremap <LEADER><LEADER>ev :e .nvimrc<CR>
 
 " Copy till the end of the line
 noremap Y y$
@@ -229,7 +251,7 @@ vnoremap Y "+y
 nnoremap < <<
 nnoremap > >>
 
-" Search
+" No highlight search result
 noremap <LEADER><CR> :nohlsearch<CR>
 
 " Adjacent duplicate words
@@ -240,7 +262,9 @@ nnoremap <LEADER>tt :%s/    /\t/g
 vnoremap <LEADER>tt :s/    /\t/g
 
 " Folding
-noremap <silent> <LEADER>o za
+noremap <silent> <LEADER>za za
+noremap <silent> <LEADER>zR zR
+noremap <silent> <LEADER>zM zM
 
 "
 " Cursor Movement
@@ -259,21 +283,17 @@ noremap = n
 "
 " Window management
 "
-noremap <LEADER>w <C-w>w
-noremap <LEADER>u <C-w>k
-noremap <LEADER>e <C-w>j
-noremap <LEADER>n <C-w>h
-noremap <LEADER>i <C-w>l
-noremap qf <C-w>o
-
-" Disable the default s key
-" noremap s <nop>
+noremap <LEADER>ww <C-w>w
+noremap <LEADER>wk <C-w>k
+noremap <LEADER>wj <C-w>j
+noremap <LEADER>wh <C-w>h
+noremap <LEADER>wl <C-w>l
 
 " Split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
-noremap <LEADER>su :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-noremap <LEADER>se :set splitbelow<CR>:split<CR>
-noremap <LEADER>sn :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
-noremap <LEADER>si :set splitright<CR>:vsplit<CR>
+noremap <LEADER>wsk :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+noremap <LEADER>wsj :set splitbelow<CR>:split<CR>
+noremap <LEADER>wsh :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
+noremap <LEADER>wsl :set splitright<CR>:vsplit<CR>
 
 " Resize splits with arrow keys
 noremap <UP> :res +5<CR>
@@ -282,32 +302,31 @@ noremap <LEFT> :vertical resize-5<CR>
 noremap <RIGHT> :vertical resize+5<CR>
 
 " Place the two screens up and down
-noremap <LEADER>sh <C-w>t<C-w>K
+noremap <LEADER>wth <C-w>t<C-w>K
 " Place the two screens side by side
-noremap <LEADER>sv <C-w>t<C-w>H
+noremap <LEADER>wtv <C-w>t<C-w>H
 
 " Rotate screens
-noremap <LEADER>srh <C-w>b<C-w>K
-noremap <LEADER>srv <C-w>b<C-w>H
-
-" Close the window below the current window
-" noremap <LEADER>q <C-w>j:q<CR>
+noremap <LEADER>wrh <C-w>b<C-w>K
+noremap <LEADER>wrv <C-w>b<C-w>H
 
 "
 " Tab management
 "
-" Create a new tab with tu
-noremap tu :tabe<CR>
-" Move around tabs with tn and ti
-noremap tj :-tabnext<CR>
-noremap tk :+tabnext<CR>
-" Move the tabs with tmn and tmi
-noremap tmj :-tabmove<CR>
-noremap tmk :+tabmove<CR>
+
+" Create a new tab
+noremap <LEADER>tn :tabe<CR>
+" Move around tabs
+noremap <LEADER>tj :-tabnext<CR>
+noremap <LEADER>tk :+tabnext<CR>
+" Move the tabs with
+noremap <LEADER>tmj :-tabmove<CR>
+noremap <LEADER>tmk :+tabmove<CR>
 
 "
 " Markdown Settings
 "
+
 source ~/.config/nvim/vim/snippets_markdown.vim
 autocmd BufRead,BufNewFile *.md setlocal spell
 
@@ -318,20 +337,22 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
 
 " Jump to next '<++>' and edit it
-noremap <LEADER>x <Esc>/<++><CR>:nohlsearch<CR>c41
+noremap <LEADER>en <Esc>/<++><CR>:nohlsearch<CR>c41
 
 " Spelling Check
-noremap <LEADER>sc :set spell!<CR>
+noremap <LEADER><LEADER>sp :set spell!<CR>
 
+" exchange lower and upper ASCII
 noremap ` ~
 
+" screen to center
 noremap <C-c> zz
 
 " Auto change directory to current dir
 autocmd BufEnter * silent! lcd %:p:h
 
 " Call figlet
-noremap tx :r !figlet
+noremap <LEADER><LEADER>pf :r !figlet
 
 " Find and replace
 noremap \s :%s///g<left><left><left>
@@ -341,11 +362,11 @@ func! SynGroup()
 	let l:s = synID(line('.'), col('.'), 1)
 	echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
 endfun
-map <F10> :call SynGroup()<CR>
+map <LEADER>cs :call SynGroup()<CR>
 
 " Compile function
-noremap r :call CompileRunGcc()<CR>
-func! CompileRunGcc()
+noremap <LEADER>cr :call CompileRunFileType()<CR>
+func! CompileRunFileType()
 	exec "w"
 	if &filetype == 'c'
 		exec "!g++ % -o %<"
@@ -392,7 +413,10 @@ endfunc
 " Plug Settings
 "
 
+"
 " vim-airline
+"
+
 let g:airline_section_x = '%{ScrollStatus()}'
 let g:airline_section_y = airline#section#create_right(['filetype'])
 let g:airline_section_z = airline#section#create([
@@ -403,31 +427,46 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
+"
 " vim-scrollstatus
+"
+
 let g:scrollstatus_size = 12
 " let g:scrollstatus_symbol_track = '-'
 " let g:scrollstatus_symbol_bar = '|'
 
+"
 " vim-hexokinase
+"
+
 let g:Hexokinase_highlighters = [
 	"\ 'virtual',
 	\ 'foregroundfull',
 	\ ]
 
+"
 " vim-illuminate
+"
+
 let g:Illuminate_delay = 750
 hi illuminatedWord cterm=undercurl gui=undercurl
 
+"
 " fzf
-set rtp+=/usr/share/fzf
-noremap <silent> <C-f> :Rg<CR>
-noremap <silent> <C-h> :History<CR>
-noremap <LEADER>; :History<CR>
-noremap <silent> <C-w> :Buffers<CR>
+"
 
 let g:fzf_preview_window = 'right:60%'
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
+
+set rtp+=/usr/share/fzf
+" Regex search
+noremap <silent> <C-f> :Rg<CR>
+" History
+noremap <silent> <C-h> :History<CR>
+noremap <LEADER>; :History<CR>
+" Show buffers
+noremap <silent> <LEADER>fb :Buffers<CR>
 
 func! s:list_buffers()
   redir => list
@@ -446,16 +485,24 @@ command! BD call fzf#run(fzf#wrap({
 	\ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
 	\ }))
 
-noremap <C-d> :BD<CR>
+" Show buffers whitch will be delete
+noremap <LEADER>fd :BD<CR>
 
+"
 " LeaderF
+"
+
 let g:Lf_PreviewInPopup = 1
 let g:Lf_PreviewCode = 1
 let g:Lf_ShowHidden = 1
 let g:Lf_ShowDevIcons = 1
+" Find file current directory
 nnoremap <C-p> :Leaderf file<CR>
 
+"
 " rnvimr
+"
+
 let g:rnvimr_enable_ex = 1
 let g:rnvimr_enable_picker = 1
 let g:rnvimr_draw_border = 0
@@ -463,7 +510,6 @@ let g:rnvimr_border_attr = {'fg': 14, 'bg': -1}
 let g:rnvimr_shadow_winblend = 70
 let g:rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
 highlight link RnvimrNormal CursorLine
-nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
 let g:rnvimr_action = {
 	\ '<C-t>': 'NvimEdit tabedit',
 	\ '<C-x>': 'NvimEdit split',
@@ -479,16 +525,24 @@ let g:rnvimr_layout = { 'relative': 'editor',
 	\ 'style': 'minimal' }
 let g:rnvimr_presets = [{'width': 0.800, 'height': 0.600}]
 
+" Toggle Rnvimr
+nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+
+"
 " any-jump
-nnoremap <LEADER>j :AnyJump<CR>
-nnoremap <LEADER>b :AnyJumpBack<CR>
+"
+
 let g:any_jump_window_width_ratio  = 0.8
 let g:any_jump_window_height_ratio = 0.9
 let g:any_jump_disable_default_keybindings = 1
 
+nnoremap <LEADER>aj :AnyJump<CR>
+nnoremap <LEADER>ab :AnyJumpBack<CR>
+
+"
 " vista
-noremap <LEADER>v :Vista!!<CR>
-noremap <C-t> :silent! Vista finder coc<CR>
+"
+
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_default_executive = 'coc'
 let g:vista_fzf_preview = ['right:50%']
@@ -498,7 +552,15 @@ let g:vista#renderer#icons = {
 	\ "variable": "\uf71b",
 	\ }
 
+" Show tag list
+noremap <LEADER>vl :Vista!!<CR>
+" Search tag list
+noremap <C-t> :silent! Vista finder coc<CR>
+
+"
 " coc.nvim
+"
+
 let g:coc_global_extensions = [
 	\ 'coc-json',
 	\ 'coc-explorer',
@@ -531,7 +593,7 @@ func! s:show_documentation()
   endif
 endfunc
 
-nnoremap <silent><nowait> <LEADER>d  :<C-u>CocList diagnostics<CR>
+nnoremap <silent><nowait> <LEADER>xd  :<C-u>CocList diagnostics<CR>
 nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
 nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
 
@@ -543,28 +605,28 @@ nmap <silent> gr <Plug>(coc-references)
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-nmap <LEADER>rn <Plug>(coc-rename)
+nmap rn <Plug>(coc-rename)
 
 " xmap <LEADER>f  <Plug>(coc-format-selected)
 " nmap <LEADER>f  <Plug>(coc-format-selected)
 
-xmap <LEADER>a  <Plug>(coc-codeaction-selected)
-nmap <LEADER>a  <Plug>(coc-codeaction-selected)
+xmap <LEADER>xcs  <Plug>(coc-codeaction-selected)
+nmap <LEADER>xcs  <Plug>(coc-codeaction-selected)
 
-nmap <LEADER>ac  <Plug>(coc-codeaction)
-nmap <LEADER>qf  <Plug>(coc-fix-current)
+nmap <LEADER>xcd  <Plug>(coc-codeaction)
+nmap <LEADER>xqf  <Plug>(coc-fix-current)
 
-xmap if <Plug>(coc-funcobj-i)
-omap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap af <Plug>(coc-funcobj-a)
-xmap ic <Plug>(coc-classobj-i)
-omap ic <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
+xmap <LEADER>xif <Plug>(coc-funcobj-i)
+omap <LEADER>xif <Plug>(coc-funcobj-i)
+xmap <LEADER>xaf <Plug>(coc-funcobj-a)
+omap <LEADER>xaf <Plug>(coc-funcobj-a)
+xmap <LEADER>xic <Plug>(coc-classobj-i)
+omap <LEADER>xic <Plug>(coc-classobj-i)
+xmap <LEADER>xac <Plug>(coc-classobj-a)
+omap <LEADER>xac <Plug>(coc-classobj-a)
 
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
+nmap <silent> <LEADER>xrs <Plug>(coc-range-select)
+xmap <silent> <LEADER>xrs <Plug>(coc-range-select)
 
 "set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 "let g:airline#extensions#coc#enabled = 1
@@ -574,7 +636,7 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 "let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
 
 " coc-explorer
-nmap tt :CocCommand explorer<CR>
+nmap T :CocCommand explorer<CR>
 " coc-translator
 nmap ts <Plug>(coc-translator-p)
 " coc-snippets
@@ -585,17 +647,22 @@ let g:coc_snippet_prev = "<C-n>"
 imap <C-e> <Plug>(coc-snippets-expand-jump)
 let g:snips_author = "stanleyguo0207"
 
+"
 " ultisnips
+"
+
 let g:tex_flavor = "latex"
 inoremap <C-n> <nop>
-let g:UltiSnipsExpandTrigger = "<C-e>"
-let g:UltiSnipsJumpForwardTrigger = "<C-e>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-n>"
+let g:UltiSnipsExpandTrigger = "<C-b>"
+let g:UltiSnipsJumpForwardTrigger = "<C-b>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-z>"
 let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/ultisnips/']
-silent! au BufEnter,BufRead,BufNewFile * silent! unmap <c-r>
+silent! au BufEnter,BufRead,BufNewFile * silent! unmap <C-r>
 
+"
 " undotree
-noremap L :UndotreeToggle<CR>
+"
+
 let g:undotree_DiffAutoOpen = 1
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_ShortIndicators = 1
@@ -609,11 +676,20 @@ func g:Undotree_CustomMap()
 	nmap <buffer> E 5<plug>UndotreePreviousState
 endfunc
 
+" Toggle Undotree
+noremap L :UndotreeToggle<CR>
+
+"
 " agit
-nnoremap <LEADER>gl :Agit<CR>
+"
 let g:agit_no_default_mappings = 1
 
+nnoremap <LEADER><LEADER>g :Agit<CR>
+
+"
 " vim-maktaba vim-codefmt
+"
+
 augroup autoformat_settings
   " autocmd FileType bzl AutoFormatBuffer buildifier
   autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
@@ -628,7 +704,10 @@ augroup autoformat_settings
   " autocmd FileType vue AutoFormatBuffer prettier
 augroup END
 
+"
 " vim-go
+"
+
 let g:go_echo_go_info = 0
 let g:go_doc_popup_window = 1
 let g:go_def_mapping_enabled = 0
@@ -657,21 +736,33 @@ let g:go_highlight_variable_assignments = 0
 let g:go_highlight_variable_declarations = 0
 let g:go_doc_keywordprg_enabled = 0
 
+"
 " vim-instant-markdown
+"
+
 let g:instant_markdown_slow = 0
 let g:instant_markdown_autostart = 0
 let g:instant_markdown_autoscroll = 1
 
+"
 " vim-table-mode
-noremap <LEADER>tm :TableModeToggle<CR>
-let g:table_mode_cell_text_object_i_map = 'k<Bar>'
+"
 
+let g:table_mode_cell_text_object_i_map = 'k<Bar>'
+noremap <LEADER><LEADER>t :TableModeToggle<CR>
+
+"
 " vim-markdown-toc
+"
+
 let g:vmt_cycle_list_item_markers = 1
 let g:vmt_fence_text = 'TOC'
 let g:vmt_fence_closing_text = '/TOC'
 
+"
 " Bullets.vim
+"
+
 let g:bullets_enabled_file_types = [
 	\ 'markdown',
 	\ 'text',
@@ -679,7 +770,10 @@ let g:bullets_enabled_file_types = [
 	\ 'scratch'
 	\]
 
+"
 " vim-visual-multi
+"
+
 let g:VM_leader = {'default': ',', 'visual': ',', 'buffer': ','}
 let g:VM_maps = {}
 let g:VM_custom_motions = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'N': '0', 'I': '$', 'h': 'e'}
@@ -694,56 +788,93 @@ let g:VM_maps['Skip Region'] = '<C-n>'
 let g:VM_maps["Undo"] = 'l'
 let g:VM_maps["Redo"] = '<C-r>'
 
+"
 " tcomment_vim
-nnoremap ci cl
+"
+
+nnoremap ti cl
 let g:tcomment_textobject_inlinecomment = ''
-nmap <LEADER>cn g>c
-vmap <LEADER>cn g>
-nmap <LEADER>cu g<c
-vmap <LEADER>cu g<
+nmap <LEADER>tc g>c
+vmap <LEADER>tc g>
+nmap <LEADER>tu g<c
+vmap <LEADER>tu g<
 
+"
 " vim-surround
-" cs"'
+"
+" type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
 
+"
 " wildfire.vim
+"
 " in Visual mode, type i' to select all text in '', or type i) i] i} ip
 
+"
 " tabular
-vmap ga :Tabularize /
+"
 
+vmap <LEADER>tb :Tabularize /
+
+"
 " vim-easymotion
+"
+
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_do_shade = 0
 let g:EasyMotion_smartcase = 1
 
+"
 " vim-subversive
+"
 
+nmap <LEADER>ss <plug>(SubversiveSubstitute)
+nmap <LEADER>sl <plug>(SubversiveSubstituteLine)
+
+"
 " rainbow
+"
+
 let g:rainbow_active = 1
 
+"
 " xtabline
+"
+
 let g:xtabline_settings = {}
 let g:xtabline_settings.enable_mappings = 0
 let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
 let g:xtabline_settings.enable_persistance = 0
 let g:xtabline_settings.last_open_first = 1
-noremap to :XTabMode<CR>
-noremap \p :echo expand('%:p')<CR>
 
+" Print current path
+noremap <LEADER>pp :echo expand('%:p')<CR>
+
+"
 " far.nvim
-noremap <LEADER>f :F  **/*<left><left><left><left><left>
+"
+
+noremap <LEADER>fr :F  **/*<left><left><left><left><left>
 let g:far#mapping = {
 	\ "replace_undo" : ["l"],
 	\ }
 
+"
 " asynctasks
+"
+
 let g:asyncrun_open = 6
 
+"
 " asyncrun
+"
+
 " noremap gp :AsyncRun git push<CR>
 
+"
 " vim-calendar
-noremap \\ :Calendar -view=clock -position=here<CR>
+"
+
+noremap <LEADER><LEADER>c :Calendar -view=clock -position=here<CR>
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
 augroup calendar-mappings
@@ -764,7 +895,10 @@ augroup calendar-mappings
 	autocmd FileType calendar nunmap <buffer> <C-p>
 augroup END
 
+"
 " open 
+"
+
 exec "nohlsearch"
 
 if has_default_nvim_configs_file == 0
