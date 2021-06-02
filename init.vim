@@ -642,8 +642,8 @@ nmap ts <Plug>(coc-translator-p)
 " coc-snippets
 imap <C-l> <Plug>(coc-snippets-expand)
 vmap <C-e> <Plug>(coc-snippets-select)
-let g:coc_snippet_next = "<C-e>"
-let g:coc_snippet_prev = "<C-n>"
+let g:coc_snippet_next = "<C-j>"
+let g:coc_snippet_prev = "<C-k>"
 imap <C-e> <Plug>(coc-snippets-expand-jump)
 let g:snips_author = "stanleyguo0207"
 
@@ -657,6 +657,7 @@ let g:UltiSnipsExpandTrigger = "<C-b>"
 let g:UltiSnipsJumpForwardTrigger = "<C-b>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-z>"
 let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/ultisnips/']
+let g:UltiSnipsEditSplit="vertical"
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap <C-r>
 
 "
@@ -896,7 +897,7 @@ augroup calendar-mappings
 augroup END
 
 "
-" open 
+" open
 "
 
 exec "nohlsearch"
