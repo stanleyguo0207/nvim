@@ -235,7 +235,7 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 |      **\<LEADER\>tt**       | **nnoremap** |                  | 空格替换为`Tab`              |                           **:%s/    /\\t/g**                           |
 |      **\<LEADER\>tt**       | **vnoremap** |                  | 空格替换为`Tab`              |                           **:s/    /\\t/g**                            |
 |      **\<LEADER\>tb**       | **vmap**     |    `tabular`     | 按照指定字符重新排列代码     |                           **:Tabularize /**                            |
-|      **\<LEADER\>ww**       | **noremap**  |     `window`     | 窗口跳转 下                  |                              **\<C-w\>w**                              |
+|      **\<LEADER\>ww**       | **noremap**  |     `window`     | 窗口跳转 下一个              |                              **\<C-w\>w**                              |
 |      **\<LEADER\>wk**       | **noremap**  |     `window`     | 窗口跳转 上                  |                              **\<C-w\>k**                              |
 |      **\<LEADER\>wj**       | **noremap**  |     `window`     | 窗口跳转 下                  |                              **\<C-w\>j**                              |
 |      **\<LEADER\>wh**       | **noremap**  |     `window`     | 窗口跳转 左                  |                              **\<C-w\>h**                              |
@@ -277,16 +277,18 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 
 **特殊buffer自定义映射**
 
-|   映射键位    | 所属映射map  |    特性    | 作用         |              组合键位              |
-| :-----------: | :----------- | :--------: | :----------- | :--------------------------------: |
-|     **u**     | **nmap**     | `undotree` | 切换到下一个 |   **\<Plug\>UndotreeNextState**    |
-|     **e**     | **nmap**     | `undotree` | 切换到上一个 | **\<Plug\>UndotreePreviousState**  |
-|     **U**     | **nmap**     | `undotree` | 切换到下五个 |   **5\<Plug\>UndotreeNextState**   |
-|     **E**     | **nmap**     | `undotree` | 切换到上五个 | **5\<Plug\>UndotreePreviousState** |
-|  **\<TAB\>**  | **inoremap** |   `coc`    | 提示窗口向下 |     **\<silent\>\<expr\>** ...     |
-| **\<S-TAB\>** | **inoremap** |   `coc`    | 提示窗口向上 |                ...                 |
-|  **\<CR\>**   | **inoremap** |   `coc`    | 确定补全方案 |     **\<silent\>\<expr\>**...      |
-|  **\<C-N\>**  | **tnoremap** |            |              |                                    |
-|  **\<C-O\>**  | **tnoremap** |            |              |                                    |
+|   映射键位    | 所属映射map  |    特性    | 作用                 |              组合键位              |
+| :-----------: | :----------- | :--------: | :------------------- | :--------------------------------: |
+|     **u**     | **nmap**     | `undotree` | 切换到下一个         |   **\<Plug\>UndotreeNextState**    |
+|     **e**     | **nmap**     | `undotree` | 切换到上一个         | **\<Plug\>UndotreePreviousState**  |
+|     **U**     | **nmap**     | `undotree` | 切换到下五个         |   **5\<Plug\>UndotreeNextState**   |
+|     **E**     | **nmap**     | `undotree` | 切换到上五个         | **5\<Plug\>UndotreePreviousState** |
+|  **\<TAB\>**  | **inoremap** |   `coc`    | 提示窗口向下         |     **\<silent\>\<expr\>** ...     |
+| **\<S-TAB\>** | **inoremap** |   `coc`    | 提示窗口向上         |                ...                 |
+|  **\<CR\>**   | **inoremap** |   `coc`    | 确定补全方案         |     **\<silent\>\<expr\>**...      |
+|  **\<C-j\>**  | **tnoremap** |   `coc`    | 跳转到下一个补全位置 |        **coc_snippet_next**        |
+|  **\<C-k\>**  | **tnoremap** |   `coc`    | 跳转到上一个补全位置 |        **coc_snippet_prev**        |
+|  **\<C-N\>**  | **tnoremap** |            |                      |                                    |
+|  **\<C-O\>**  | **tnoremap** |            |                      |                                    |
 
 ## 效果展示
