@@ -1,0 +1,164 @@
+
+**noremap**
+|       映射键位       | 效果说明                                 |                                原始键位                                |
+| :------------------: | :--------------------------------------- | :--------------------------------------------------------------------: |
+|        **;**         | 进入命令模式                             |                                 **:**                                  |
+|        **Q**         | 关闭当前buffer 不保存                    |                              **:q\<CR\>**                              |
+|        **S**         | 保存当前buffer                           |                              **:w\<CR\>**                              |
+|        **Y**         | 复制从当前位置到行尾内容                 |                                 **y$**                                 |
+|        **-**         | 跳到上一个查找结果                       |                                 **N**                                  |
+|        **=**         | 跳到下一个查找结果                       |                                 **n**                                  |
+|        **`**         | 大小写转换                               |                                 **~**                                  |
+|        **r**         | 运行当前文件                             |                    **:call CompileRunGcc()\<CR\>**                     |
+|        **R**         | **\<silent\>** `rnvim` 打开`Ranger`      |      **:RnvimrToggle\<CR\>\<C-\\\>\<C-n\>:RnvimrResize 0\<CR\>**       |
+|        **L**         | `undotree` 打开undo列表                  |                       **:UndotreeToggle\<CR\>**                        |
+|        **tu**        | `tabe`创建一个buffer                     |                            **:tabe\<CR\>**                             |
+|        **tj**        | `tabe`切换下一个buffer                   |                          **:-tabenext\<CR\>**                          |
+|        **tk**        | `tabe`切换上一个buffer                   |                          **:+tabenext\<CR\>**                          |
+|       **tmj**        | `tabe`buffer移动到上一个位置             |                          **:-tabemove\<CR\>**                          |
+|       **tmk**        | `tabe`buffer移动到下一个位置             |                          **:+tabemove\<CR\>**                          |
+|        **tx**        | 将输入转为字符画输出                     |                             **:r !figlet**                             |
+|      **\<UP\>**      | 屏幕向上移动5个单位                      |                           **:res +5\<CR\>**                            |
+|     **\<DOWN\>**     | 屏幕向下移动5个单位                      |                           **:res -5\<CR\>**                            |
+|     **\<LEFT\>**     | 屏幕向左移动5个单位                      |                      **:vertical resize-5\<CR\>**                      |
+|    **\<RIGHT\>**     | 屏幕向右移动5个单位                      |                      **:vertical resize+5\<CR\>**                      |
+|     **\<F10\>**      | 同步组信息                               |                       **:call SynGroup()\<CR\>**                       |
+|       **\\v**        | **\<silent\>** **visual** 模式选中到行尾 |                                **v$h**                                 |
+|       **\\t**        | 打开一个新的`st`实例                     | **:tabe\<CR\>:-tabmove\<CR\>:term sh -c 'st'\<CR\><C-\><C-N>:q\<CR\>** |
+|       **\\s**        | 全局查找替换                             |                  **:%s///g\<left\>\<left\>\<left\>**                   |
+|       **\\p**        | `xtabline`                               |                     **:echo expand('%:p')\<CR\>**                      |
+|       **\\\\**       | `vim-calendar` 显示当前时间              |             **:Calendar -view=clock -position=here\<CR\>**             |
+|     **\<C-p\>**      | `LeaderF` 查找文件                       |                        **:Leaderf file\<CR\>**                         |
+|     **\<C-q\>**      | 关闭所有buffer                           |                             **:qa\<CR\>**                              |
+|     **\<C-c\>**      | 屏幕居中到当前行                         |                                 **zz**                                 |
+|     **\<C-t\>**      | `vista` 打开函数列表查找窗口             |                  **:silent! Vista finder coc\<CR\>**                   |
+|     **\<C-w\>**      | **\<silent\>** `fzf` 显示打开的缓冲区    |                           **:Buffers\<CR\>**                           |
+|     **\<C-d\>**      | `fzf` 显示打开的缓冲区选择要关闭的       |                             **:DB\<CR\>**                              |
+|     **\<C-f\>**      | **\<silent\>** `fzf` 正则表达式查找      |                             **:Rg\<CR\>**                              |
+|     **\<C-h\>**      | **\<silent\>** `fzf` 历史记录            |                           **:History\<CR\>**                           |
+|   **\<LEADER\>;**    | `fzf` 历史记录                           |                           **:History\<CR\>**                           |
+|   **\<LEADER\>f**    | `fzf` 在指定文件中查找模式               |        **:F  \*\*/\*\<left\>\<left\>\<left\>\<left\>\<left\>**         |
+|   **\<LEADER\>/**    | 下方开启一个终端                         |     **:set splitbelow\<CR\>:split\<CR\>:res +10\<CR\>:term\<CR\>**     |
+|   **\<LEADER\>qf**   | buffer窗口除了第一个其余关闭             |                              **\<C-w\>o**                              |
+|   **\<LEADER\>rc**   | 编译 **init.vim** 文件                   |                  **:e ~/.config/nvim/init.vim\<CR\>**                  |
+|   **\<LEADER\>rv**   | 当前目录下创建一个 **.nvimrc** 文件      |                          **:e .nvimrc\<CR\>**                          |
+| **\<LEADER\>\<CR\>** | 关闭搜索高亮显示                         |                         **:nohlsearch\<CR\>**                          |
+|   **\<LEADER\>dw**   | 相邻的重复词                             |                    **/\\(\\<\\w\+\\>\\)\\_s\*\\1**                     |
+|   **\<LEADER\>o**    | **\<silent\>** 折叠/打开当前代码块       |                                 **za**                                 |
+|   **\<LEADER\>w**    | 窗口跳转 下                              |                              **\<C-w\>w**                              |
+|   **\<LEADER\>u**    | 窗口跳转 上                              |                              **\<C-w\>k**                              |
+|   **\<LEADER\>e**    | 窗口跳转 下                              |                              **\<C-w\>j**                              |
+|   **\<LEADER\>n**    | 窗口跳转 左                              |                              **\<C-w\>h**                              |
+|   **\<LEADER\>i**    | 窗口跳转 右                              |                              **\<C-w\>l**                              |
+|   **\<LEADER\>su**   | 创建窗口并跳转 上                        |      **:set nosplitbelow\<CR\>:split\<CR\>:set splitbelow\<CR\>**      |
+|   **\<LEADER\>se**   | 创建窗口并跳转 下                        |                 **:set splitbelow\<CR\>:split\<CR\>**                  |
+|   **\<LEADER\>sn**   | 创建窗口并跳转 左                        |     **:set nosplitright\<CR\>:vsplit\<CR\>:set splitright\<CR\>**      |
+|   **\<LEADER\>si**   | 创建窗口并跳转 右                        |                 **:set splitright\<CR\>:vsplit\<CR\>**                 |
+|   **\<LEADER\>sh**   | 两个窗口重新垂直布局                     |                          **\<C-w\>t\<C-w\>K**                          |
+|   **\<LEADER\>sv**   | 两个窗口重新水平布局                     |                          **\<C-w\>t\<C-w\>H**                          |
+|  **\<LEADER\>srh**   | 两个窗口布局垂直旋转                     |                          **\<C-w\>b\<C-w\>K**                          |
+|  **\<LEADER\>srv**   | 两个窗口布局水平旋转                     |                          **\<C-w\>b\<C-w\>H**                          |
+|   **\<LEADER\>x**    | 跳转到下一个\<++\>位置并编辑             |              **\<Esc\>/\<++\>\<CR\>:nohlsearch\<CR\>c41**              |
+|   **\<LEADER\>sc**   | 开启/关闭拼写检查                        |                         **:set spell!\<CR\>**                          |
+|   **\<LEADER\>j**    | `any-jump` 跳转                          |                           **:AnyJump\<CR\>**                           |
+|   **\<LEADER\>b**    | `any-jump` 回跳                          |                         **:AnyJumpBack\<CR\>**                         |
+|   **\<LEADER\>v**    | `vista` 侧面打开函数列表                 |                           **:Vista!!\<CR\>**                           |
+|   **\<LEADER\>tm**   | `vim-table-mode` 触发表格                |                       **:TableModeToggle\<CR\>**                       |
+
+
+**nmap**
+|     映射键位     | 效果说明                         |                 原始键位                  |
+| :--------------: | :------------------------------- | :---------------------------------------: |
+|      **gd**      | `coc` 跳转定义                   |       **\<Plug\>(coc-definition)**        |
+|      **gD**      | `coc` 跳转定义右侧打开新的buffer | **:tab sp\<CR\>\<Plug\>(coc-definition)** |
+|      **gy**      | `coc` 跳转类型定义               |     **\<Plug\>(coc-type-definition)**     |
+|      **gi**      | `coc` 跳转实现                   |     **\<Plug\>(coc-implementation)**      |
+|      **gr**      | `coc` 跳转引用                   |       **\<Plug\>(coc-references)**        |
+|      **tt**      | `coc` 文件浏览                   |      **:CocCommand explorer\<CR\>**       |
+|      **ts**      | `coc` 翻译                       |      **\<Plug\>(coc-translator-p)**       |
+|      **u**       | **\<buffer\>** `undotree` 翻译   |       **\<Plug\>UndotreeNextState**       |
+|      **e**       | **\<buffer\>** `undotree` 翻译   |    **5\<Plug\>UndotreePreviousState**     |
+|      **U**       | **\<buffer\>** `undotree` 翻译   |       **\<Plug\>UndotreeNextState**       |
+|      **E**       | **\<buffer\>** `undotree` 翻译   |    **5\<Plug\>UndotreePreviousState**     |
+|   **\<C-s\>**    | `coc`                            |      **\<Plug\>(coc-range-select)**       |
+| **\<LEADER\>-**  | `coc` 诊断错误位置向前           |     **\<Plug\>(coc-diagnostic-prev)**     |
+| **\<LEADER\>=**  | `coc` 诊断错误位置向后           |     **\<Plug\>(coc-diagnostic-next)**     |
+| **\<LEADER\>rn** | `coc` 重命名                     |         **\<Plug\>(coc-rename)**          |
+| **\<LEADER\>a**  | `coc` 代码操作选中部分           |   **\<Plug\>(coc-codeaction-selected)**   |
+| **\<LEADER\>ac** | `coc` 代码操作提示               |       **\<Plug\>(coc-codeaction)**        |
+| **\<LEADER\>qf** | `coc` 修复当前                   |       **\<Plug\>(coc-fix-current)**       |
+| **\<LEADER\>cn** | `tcomment_vim` 注释              |                  **g>c**                  |
+| **\<LEADER\>cu** | `tcomment_vim` 反注释            |                  **g<c**                  |
+
+
+**nnoremap**
+|     映射键位     | 效果说明                                    |                  原始键位                   |
+| :--------------: | :------------------------------------------ | :-----------------------------------------: |
+|      **<**       | 向左移动 **\<TAB\>**                        |                   **<<**                    |
+|      **>**       | 向右移动 **\<TAB\>**                        |                   **>>**                    |
+|      **K**       | **\<silent\>** `coc` 查看文档               | **:call \<SID\>show_documentation()\<CR\>** |
+|      **ci**      | `tcomment_vim` 注释                         |                   **cl**                    |
+| **\<LEADER\>tt** | 空格替换为`Tab`                             |             **:%s/    /\\t/g**              |
+| **\<LEADER\>d**  | **\<silent\>\<nowait\>** `coc` 诊断错误列表 |    **:\<C-u\>CocList diagnostics\<CR\>**    |
+| **\<LEADER\>gl** | `agit` 打开git仓库                          |               **:Agit\<CR\>**               |
+
+
+**vmap**
+|     映射键位     | 效果说明                           |             原始键位              |
+| :--------------: | :--------------------------------- | :-------------------------------: |
+|      **ga**      | `tabular` 按照指定字符重新排列代码 |         **:Tabularize /**         |
+|   **\<C-e\>**    | `coc` 选择代码片段                 | **\<Plug\>(coc-snippets-select)** |
+| **\<LEADER\>cn** | `tcomment_vim` 注释                |              **g>**               |
+| **\<LEADER\>cu** | `tcomment_vim` 反注释              |              **g<**               |
+
+
+**vnoremap**
+|     映射键位     | 效果说明         |     原始键位      |
+| :--------------: | :--------------- | :---------------: |
+|      **Y**       | 复制到系统剪切板 |      **"+y**      |
+| **\<LEADER\>tt** | 空格替换为`Tab`  | **:s/    /\\t/g** |
+
+
+**xmap**
+|    映射键位     | 效果说明               |               原始键位                |
+| :-------------: | :--------------------- | :-----------------------------------: |
+|     **if**      | `coc`                  |      **\<Plug\>(coc-funcobj-i)**      |
+|     **af**      | `coc`                  |      **\<Plug\>(coc-funcobj-a)**      |
+|     **ic**      | `coc`                  |     **\<Plug\>(coc-classobj-i)**      |
+|     **ac**      | `coc`                  |     **\<Plug\>(coc-classobj-a)**      |
+|   **\<C-s\>**   | `coc`                  |    **\<Plug\>(coc-range-select)**     |
+| **\<LEADER\>a** | `coc` 代码操作选中部分 | **\<Plug\>(coc-codeaction-selected)** |
+
+
+**omap**
+| 映射键位 | 效果说明 |           原始键位           |
+| :------: | :------- | :--------------------------: |
+|  **if**  | `coc`    | **\<Plug\>(coc-funcobj-i)**  |
+|  **af**  | `coc`    | **\<Plug\>(coc-funcobj-a)**  |
+|  **ic**  | `coc`    | **\<Plug\>(coc-classobj-i)** |
+|  **ac**  | `coc`    | **\<Plug\>(coc-classobj-a)** |
+
+
+**imap**
+|  映射键位   | 效果说明               |                原始键位                |
+| :---------: | :--------------------- | :------------------------------------: |
+| **\<C-l\>** | `coc` 插入代码片段     |   **\<Plug\>(coc-snippets-expand)**    |
+| **\<C-e\>** | `coc` 插入代码片段跳转 | **\<Plug\>(coc-snippets-expand-jump)** |
+
+
+**inoremap**
+|   映射键位    | 效果说明                                  |     原始键位      |
+| :-----------: | :---------------------------------------- | :---------------: |
+|  **\<C-a\>**  | 光标移动到行尾                            |   **\<ESC\>A**    |
+|  **\<C-o\>**  | **\<silent\>\<expr\>** `coc` 弹出提示窗口 | **coc#refresh()** |
+|  **\<TAB\>**  | **\<silent\>\<expr\>** `coc` 提示窗口向下 |        ...        |
+| **\<S-TAB\>** | `coc` 提示窗口向上                        |        ...        |
+|  **\<CR\>**   | **\<silent\>\<expr\>** `coc` 确定补全方案 |        ...        |
+
+
+
+**tnoremap**
+|  映射键位   | 效果说明 | 原始键位 |
+| :---------: | :------- | :------: |
+| **\<C-N\>** |          |          |
+| **\<C-O\>** |          |          |

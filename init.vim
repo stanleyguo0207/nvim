@@ -299,11 +299,11 @@ noremap <LEADER>srv <C-w>b<C-w>H
 " Create a new tab with tu
 noremap tu :tabe<CR>
 " Move around tabs with tn and ti
-noremap tn :-tabnext<CR>
-noremap ti :+tabnext<CR>
+noremap tj :-tabnext<CR>
+noremap tk :+tabnext<CR>
 " Move the tabs with tmn and tmi
-noremap tmn :-tabmove<CR>
-noremap tmi :+tabmove<CR>
+noremap tmj :-tabmove<CR>
+noremap tmk :+tabmove<CR>
 
 "
 " Markdown Settings
@@ -727,7 +727,7 @@ let g:xtabline_settings.enable_mappings = 0
 let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
 let g:xtabline_settings.enable_persistance = 0
 let g:xtabline_settings.last_open_first = 1
-noremap to :XTabCycleMode<CR>
+noremap to :XTabMode<CR>
 noremap \p :echo expand('%:p')<CR>
 
 " far.nvim
@@ -740,7 +740,7 @@ let g:far#mapping = {
 let g:asyncrun_open = 6
 
 " asyncrun
-noremap gp :AsyncRun git push<CR>
+" noremap gp :AsyncRun git push<CR>
 
 " vim-calendar
 noremap \\ :Calendar -view=clock -position=here<CR>
