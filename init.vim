@@ -579,7 +579,7 @@ endfunc
 inoremap <silent><expr> <C-o> coc#refresh()
 
 inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm()
-	\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+	\: "\<C-g>u\<CR>\<C-r>=coc#on_enter()\<CR>"
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
