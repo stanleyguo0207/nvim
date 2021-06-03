@@ -53,9 +53,6 @@ Plug 'https://gitee.com/stanleyguo0207/vista.vim'
 Plug 'https://gitee.com/stanleyguo0207/coc.nvim', {'branch': 'release'}
 Plug 'https://gitee.com/stanleyguo0207/tmux-complete.vim'
 
-" Snippet
-Plug 'https://gitee.com/stanleyguo0207/ultisnips'
-
 " Undo tree
 Plug 'https://gitee.com/stanleyguo0207/undotree'
 
