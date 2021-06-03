@@ -212,7 +212,7 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 |      **\<LEADER\>bf**       | **noremap**  |     `buffer`     | `buffer`关闭除了第一个       |                              **\<C-w\>o**                              |
 |      **\<LEADER\>cr**       | **noremap**  |      `call`      | 运行当前文件                 |                  **:call CompileRunFileType()\<CR\>**                  |
 |      **\<LEADER\>cs**       | **noremap**  |      `call`      | 打印选中所属组信息           |                       **:call SynGroup()\<CR\>**                       |
-|      **\<LEADER\>dw**       | **noremap**  |                  | 相邻的重复词                 |                    **/\\(\\<\\w\+\\>\\)\\_s\*\\1**                     |
+|      **\<LEADER\>dw**       | **noremap**  |                  | 相邻的重复词                 |                    **/\\(\\\<\\w\\+\\\>\)\\_s\*\\1**                     |
 |      **\<LEADER\>en**       | **noremap**  |      `edit`      | 跳转到下一个\<++\>位置并编辑 |              **\<Esc\>/\<++\>\<CR\>:nohlsearch\<CR\>c41**              |
 |      **\<LEADER\>fb**       | **noremap**  |      `fzf`       | 显示打开的缓冲区             |                     **\<silent\> :Buffers\<CR\>**                      |
 |      **\<LEADER\>fd**       | **noremap**  |      `fzf`       | 显示打开的缓冲区选择要关闭的 |                             **:BD\<CR\>**                              |
