@@ -1,4 +1,4 @@
-fun! utility#Filename(...)
+func! utility#Filename(...)
   let template = get(a:000, 0, "$1")
   let arg2 = get(a:000, 1, "")
 
@@ -9,4 +9,19 @@ fun! utility#Filename(...)
   else
     return substitute(template, '$1', basename, 'g')
   endif
-endfun
+endfunc
+
+func! utility#FileGuard(...)
+  let template = get(a:000, 0, "$1")
+  let defaultguard = get(a:000, 1, "")
+                                  
+  let pathname = expand("%:p:h")
+  let filename = expand("%:t:r")
+  let guardname = join(split(pathname, '/'), '_') . "_" . filename
+                                                                  
+  if guardname == ""
+    return defaultguard
+  else
+    let guard = substitute(guardname, '\.', '', 'g')
+    return substitute(template, '$1', guard, 'g')
+endfunc

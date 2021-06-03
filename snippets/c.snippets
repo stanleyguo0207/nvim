@@ -30,10 +30,9 @@ snippet #ifndef
 
 # header include guard
 snippet once
-	#ifndef ${1:`toupper(vim_snippets#Filename('$1_H', 'UNTITLED_H'))`}
-
+	#ifndef ${1:`toupper(utility#FileGuard('$1_H_', 'UNTITLED_H_'))`}
 	#define $1
 
 	${0}
 
-	#endif /* end of include guard: $1 */
+	#endif // $1
