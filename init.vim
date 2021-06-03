@@ -641,24 +641,31 @@ nmap T :CocCommand explorer<CR>
 nmap ts <Plug>(coc-translator-p)
 " coc-snippets
 imap <C-l> <Plug>(coc-snippets-expand)
-vmap <C-e> <Plug>(coc-snippets-select)
+vmap <C-j> <Plug>(coc-snippets-select)
 let g:coc_snippet_next = "<C-j>"
 let g:coc_snippet_prev = "<C-k>"
-imap <C-e> <Plug>(coc-snippets-expand-jump)
-let g:snips_author = "stanleyguo0207"
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+xmap <leader>xsn  <Plug>(coc-convert-snippet)
+
+" imap <C-l> <Plug>(coc-snippets-expand)
+" vmap <C-e> <Plug>(coc-snippets-select)
+" let g:coc_snippet_next = "<C-j>"
+" let g:coc_snippet_prev = "<C-k>"
+" imap <C-e> <Plug>(coc-snippets-expand-jump)
+" let g:snips_author = "stanleyguo0207"
 
 "
 " ultisnips
 "
 
-let g:tex_flavor = "latex"
-inoremap <C-n> <nop>
-let g:UltiSnipsExpandTrigger = "<C-b>"
-let g:UltiSnipsJumpForwardTrigger = "<C-b>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-z>"
-let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/ultisnips/']
-let g:UltiSnipsEditSplit="vertical"
-silent! au BufEnter,BufRead,BufNewFile * silent! unmap <C-r>
+"let g:tex_flavor = "latex"
+"inoremap <C-n> <nop>
+"let g:UltiSnipsExpandTrigger = "<C-b>"
+"let g:UltiSnipsJumpForwardTrigger = "<C-b>"
+"let g:UltiSnipsJumpBackwardTrigger = "<C-z>"
+"let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/ultisnips/']
+"let g:UltiSnipsEditSplit="vertical"
+"silent! au BufEnter,BufRead,BufNewFile * silent! unmap <C-r>
 
 "
 " undotree

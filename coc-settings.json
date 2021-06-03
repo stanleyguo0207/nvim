@@ -22,14 +22,21 @@
 			"ignoredRootPaths": []
 		},
 		"cmake": {
-      "command": "cmake-language-server",
-      "filetypes": ["cmake"],
-      "rootPatterns": [
-        "build/"
-      ],
-      "initializationOptions": {
-        "buildDirectory": "build"
-      }
-    }
-	}
+			"command": "cmake-language-server",
+			"filetypes": ["cmake"],
+			"rootPatterns": [
+				"build/"
+			],
+			"initializationOptions": {
+				"buildDirectory": "build"
+			}
+    	}
+	},
+	"snippets.extends": {
+		"cpp": ["c"]
+	},
+	"snippets.ultisnips.directories": [
+		"$HOME/.config/nvim/ultisnips/"
+	],
+	"snippets.snipmate.author": "stanleyguo0207"
 }
