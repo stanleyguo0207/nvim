@@ -559,8 +559,10 @@ noremap <C-t> :silent! Vista finder coc<CR>
 "
 
 let g:coc_global_extensions = [
-	\ 'coc-json',
+	\ 'coc-diagnostic',
 	\ 'coc-explorer',
+	\ 'coc-json',
+	\ 'coc-lists',
 	\ 'coc-translator',
 	\ 'coc-snippets',
 	\ 'coc-git']
@@ -625,12 +627,12 @@ omap <LEADER>xac <Plug>(coc-classobj-a)
 nmap <silent> <LEADER>xrs <Plug>(coc-range-select)
 xmap <silent> <LEADER>xrs <Plug>(coc-range-select)
 
-"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-"let g:airline#extensions#coc#enabled = 1
-"let airline#extensions#coc#error_symbol = 'Error:'
-"let airline#extensions#coc#warning_symbol = 'Warning:'
-"let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
-"let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+let g:airline#extensions#coc#enabled = 1
+let airline#extensions#coc#error_symbol = 'Error:'
+let airline#extensions#coc#warning_symbol = 'Warning:'
+let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
+let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
 
 " coc-explorer
 nmap T :CocCommand explorer<CR>
@@ -650,19 +652,6 @@ xmap <leader>xsn  <Plug>(coc-convert-snippet)
 " let g:coc_snippet_prev = "<C-k>"
 " imap <C-e> <Plug>(coc-snippets-expand-jump)
 " let g:snips_author = "stanleyguo0207"
-
-"
-" ultisnips
-"
-
-"let g:tex_flavor = "latex"
-"inoremap <C-n> <nop>
-"let g:UltiSnipsExpandTrigger = "<C-b>"
-"let g:UltiSnipsJumpForwardTrigger = "<C-b>"
-"let g:UltiSnipsJumpBackwardTrigger = "<C-z>"
-"let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/ultisnips/']
-"let g:UltiSnipsEditSplit="vertical"
-"silent! au BufEnter,BufRead,BufNewFile * silent! unmap <C-r>
 
 "
 " undotree

@@ -125,7 +125,6 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 -   [terminus](https://github.com/wincent/terminus)
 -   [suda.vim](https://github.com/lambdalisue/suda.vim)
 -   [any-jump.vim](https://github.com/pechorin/any-jump.vim)
--   [ultisnips](https://github.com/SirVer/ultisnips)
 
 ## 键位设置
 
@@ -196,8 +195,10 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 |        **\<DOWN\>**         | **noremap**  |                    | 屏幕向下移动5个单位          |                           **:res -5\<CR\>**                            |
 |        **\<LEFT\>**         | **noremap**  |                    | 屏幕向左移动5个单位          |                      **:vertical resize-5\<CR\>**                      |
 |        **\<RIGHT\>**        | **noremap**  |                    | 屏幕向右移动5个单位          |                      **:vertical resize+5\<CR\>**                      |
+|         **\<TAB\>**         | **inoremap** |       `coc`        | 弹出snippets窗口 向下移动    |                       **\<silent\>\<expr\>** ...                       |
+|        **\<S-TAB\>**        | **inoremap** |       `coc`        | snippets窗口提示窗口向上     |                                  ...                                   |
+|         **\<CR\>**          | **inoremap** |       `coc`        | 确定补全方案                 |                       **\<silent\>\<expr\>**...                        |
 |         **\<C-a\>**         | **inoremap** |                    | 光标移动到行尾               |                              **\<ESC\>A**                              |
-|         **\<C-b\>**         | **noremap**  |    `ultisnips`     | 触发`ultisnips`              |                      **g:UltiSnipsExpandTrigger**                      |
 |         **\<C-c\>**         | **noremap**  |                    | 屏幕居中到当前行             |                                 **zz**                                 |
 |         **\<C-f\>**         | **noremap**  |       `fzf`        | 正则表达式查找               |                        **\<silent\> :Rg\<CR\>**                        |
 |         **\<C-k\>**         | **noremap**  | `vim-visual-multi` | 进入`vim-visual-multi`       |                  **g:VM_maps['Find Subword Under']**                   |
@@ -285,20 +286,15 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 
 **特殊buffer自定义映射**
 
-|   映射键位    | 所属映射map  |    特性     | 作用                 |              组合键位              |
-| :-----------: | :----------- | :---------: | :------------------- | :--------------------------------: |
-|     **u**     | **nmap**     | `undotree`  | 切换到下一个         |   **\<Plug\>UndotreeNextState**    |
-|     **e**     | **nmap**     | `undotree`  | 切换到上一个         | **\<Plug\>UndotreePreviousState**  |
-|     **U**     | **nmap**     | `undotree`  | 切换到下五个         |   **5\<Plug\>UndotreeNextState**   |
-|     **E**     | **nmap**     | `undotree`  | 切换到上五个         | **5\<Plug\>UndotreePreviousState** |
-|  **\<TAB\>**  | **inoremap** |    `coc`    | 提示窗口向下         |     **\<silent\>\<expr\>** ...     |
-| **\<S-TAB\>** | **inoremap** |    `coc`    | 提示窗口向上         |                ...                 |
-|  **\<CR\>**   | **inoremap** |    `coc`    | 确定补全方案         |     **\<silent\>\<expr\>**...      |
-|  **\<C-j\>**  | **tnoremap** |    `coc`    | 跳转到下一个补全位置 |        **coc_snippet_next**        |
-|  **\<C-k\>**  | **tnoremap** |    `coc`    | 跳转到上一个补全位置 |        **coc_snippet_prev**        |
-|  **\<C-b\>**  | **noremap**  | `ultisnips` | 跳转到下一个补全位置 | **g:UltiSnipsJumpForwardTrigger**  |
-|  **\<C-z\>**  | **noremap**  | `ultisnips` | 跳转到上一个补全位置 | **g:UltiSnipsJumpBackwardTrigger** |
-|  **\<C-N\>**  | **tnoremap** |             |                      |                                    |
-|  **\<C-O\>**  | **tnoremap** |             |                      |                                    |
+|  映射键位   | 所属映射map  |    特性    | 作用                 |              组合键位              |
+| :---------: | :----------- | :--------: | :------------------- | :--------------------------------: |
+|    **u**    | **nmap**     | `undotree` | 切换到下一个         |   **\<Plug\>UndotreeNextState**    |
+|    **e**    | **nmap**     | `undotree` | 切换到上一个         | **\<Plug\>UndotreePreviousState**  |
+|    **U**    | **nmap**     | `undotree` | 切换到下五个         |   **5\<Plug\>UndotreeNextState**   |
+|    **E**    | **nmap**     | `undotree` | 切换到上五个         | **5\<Plug\>UndotreePreviousState** |
+| **\<C-j\>** | **tnoremap** |   `coc`    | 跳转到下一个补全位置 |        **coc_snippet_next**        |
+| **\<C-k\>** | **tnoremap** |   `coc`    | 跳转到上一个补全位置 |        **coc_snippet_prev**        |
+| **\<C-N\>** | **tnoremap** |            |                      |                                    |
+| **\<C-O\>** | **tnoremap** |            |                      |                                    |
 
 ## 效果展示

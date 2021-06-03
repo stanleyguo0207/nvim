@@ -1,4 +1,12 @@
 {
+	"coc.preferences.snippetStatusText": "Ⓢ ",
+	"snippets.extends": {
+		"cpp": ["c"]
+	},
+	"snippets.ultisnips.directories": [
+		"$HOME/.config/nvim/ultisnips/"
+	],
+	"snippets.snipmate.author": "stanleyguo0207",
 	"languageserver": {
 		"ccls": {
 			"command": "ccls",
@@ -31,12 +39,5 @@
 				"buildDirectory": "build"
 			}
     	}
-	},
-	"snippets.extends": {
-		"cpp": ["c"]
-	},
-	"snippets.ultisnips.directories": [
-		"$HOME/.config/nvim/ultisnips/"
-	],
-	"snippets.snipmate.author": "stanleyguo0207"
+	}
 }
