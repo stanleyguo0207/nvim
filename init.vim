@@ -324,8 +324,8 @@ noremap <LEADER>tmk :+tabmove<CR>
 " Markdown Settings
 "
 
-source ~/.config/nvim/vim/snippets_markdown.vim
-autocmd BufRead,BufNewFile *.md setlocal spell
+"source ~/.config/nvim/ftplugin/markdown.vim
+"autocmd BufRead,BufNewFile *.md setlocal spell
 
 " Open a new instance of the cwd
 " nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
