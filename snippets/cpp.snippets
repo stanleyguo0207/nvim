@@ -19,35 +19,10 @@ def write_docstring_args(arglist, snip):
 		snip.rv = args[0]
 endglobal
 
-snippet doxh "License"
-/*
- * This file is part of the typhoon Project.
- * Copyright (C) 2021 stanley0207@163.com
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-endsnippet
-
-snippet #ifndef "#ifndef ... #define ... #endif"
-#ifndef ${1/([A-Za-z0-9_]+).*/$1/}
-#define ${1:SYMBOL} ${2:value}
-#endif /* ifndef $1 */
-endsnippet
-
-snippet beginend "$1.begin(), $1.end() (beginend)"
-${1:v}${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}begin(), $1${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}end()
-endsnippet
+##
+#	$1.begin(), $1.end() (beginend)
+snippet beginend
+	${1:v}${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}begin(), $1${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}end()
 
 snippet ns "namespace .. (namespace)"
 namespace${1/.+/ /m}${1:`!p snip.rv = snip.basename or "name"`} {

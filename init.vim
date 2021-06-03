@@ -646,13 +646,6 @@ let g:coc_snippet_prev = "<C-k>"
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 xmap <leader>xsn  <Plug>(coc-convert-snippet)
 
-" imap <C-l> <Plug>(coc-snippets-expand)
-" vmap <C-e> <Plug>(coc-snippets-select)
-" let g:coc_snippet_next = "<C-j>"
-" let g:coc_snippet_prev = "<C-k>"
-" imap <C-e> <Plug>(coc-snippets-expand-jump)
-" let g:snips_author = "stanleyguo0207"
-
 "
 " undotree
 "
