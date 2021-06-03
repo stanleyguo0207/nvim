@@ -2,37 +2,77 @@ priority -50
 
 ##
 # License
-snippet doch
-  /*
-   * This file is part of the typhoon Project.
-   * Copyright (C) 2021 stanley0207@163.com
-   *
-   * This program is free software: you can redistribute it and/or modify
-   * it under the terms of the GNU General Public License as published by
-   * the Free Software Foundation, either version 3 of the License, or
-   * (at your option) any later version.
-   *
-   * This program is distributed in the hope that it will be useful,
-   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   * GNU General Public License for more details.
-   *
-   * You should have received a copy of the GNU General Public License
-   * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-   */
+snippet doxh
+	/*
+	 * This file is part of the typhoon Project.
+	 * Copyright (C) 2021 stanley0207@163.com
+	 *
+	 * This program is free software: you can redistribute it and/or modify
+	 * it under the terms of the GNU General Public License as published by
+	 * the Free Software Foundation, either version 3 of the License, or
+	 * (at your option) any later version.
+	 *
+	 * This program is distributed in the hope that it will be useful,
+	 * but WITHOUT ANY WARRANTY; without even the implied warranty of
+	 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	 * GNU General Public License for more details.
+	 *
+	 * You should have received a copy of the GNU General Public License
+	 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	 */
+	
+	${0}
 
 ##
-# #ifndef ... #define ... #endif
-snippet #ifndef
-  #ifndef ${1/([A-Za-z0-9_]+).*/$1/}
-  #define ${1:SYMBOL} ${2:value}
-  #endif /* ifndef $1 */
-
 # header include guard
-snippet once
+snippet guard
 	#ifndef ${1:`toupper(utility#FileGuard('$1_H_', 'UNTITLED_H_'))`}
 	#define $1
 
 	${0}
 
 	#endif // $1
+
+##
+# main
+snippet main
+	int main(int argc, char *argv[]) {
+		${0}
+		return 0;
+	}
+
+## 
+# #include <...>
+snippet inc
+	#include <${1:stdio}.h>
+
+## 
+# #include <...>
+snippet Inc
+	#include "${1:`vim_snippets#Filename("$1.h")`}"
+
+##
+# ifndef...define...endif
+snippet ndef
+	#ifndef $1
+	#define ${1:SYMBOL} ${2:value}
+	#endif // $1
+
+##
+# define
+snippet def
+	#define
+
+##
+# if defined(...)
+snippet ifdef
+	#if defined(${1:SYMBOL})
+		${2}
+	#endif
+
+##
+# if !defined(...)
+snippet ifdefn
+	#if !defined(${1:SYMBOL})
+		${2}
+	#endif

@@ -19,41 +19,6 @@ def write_docstring_args(arglist, snip):
 		snip.rv = args[0]
 endglobal
 
-##
-#	$1.begin(), $1.end() (beginend)
-snippet beginend
-	${1:v}${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}begin(), $1${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}end()
-
-snippet ns "namespace .. (namespace)"
-namespace${1/.+/ /m}${1:`!p snip.rv = snip.basename or "name"`} {
-	${VISUAL}$0
-}${1/.+/ \/* /m}$1${1/.+/ *\/ /m}
-endsnippet
-
-snippet vector "std::vector (v)"
-std::vector<${1:char}> v$0;
-endsnippet
-
-snippet map "std::map (map)"
-std::map<${1:key}, ${2:value}> map$0;
-endsnippet
-
-snippet map "std::unordered_map (map)"
-std::unordered_map<${1:key}, ${2:value}> umap$0;
-endsnippet
-
-snippet set "std::set (set)"
-std::set<${1:key}> set$0;
-endsnippet
-
-snippet set "std::unordered_set (set)"
-std::unordered_set<${1:key}> uset$0;
-endsnippet
-
-snippet tp "template <typename ..> (template)"
-template <typename ${1:_InputIter}>
-endsnippet
-
 snippet doxc "Basic c++ doxygen function template" b
 /**
  * @brief: ${4:brief}
@@ -66,3 +31,8 @@ ${1:ReturnType} ${2:FunctionName}(${3:param}) {
 	${0:FunctionBody}
 }
 endsnippet
+
+## 
+# #include <...>
+snippet inc
+	#include <${1:iostream}>
