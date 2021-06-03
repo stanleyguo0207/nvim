@@ -174,9 +174,13 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 |            **Q**            | **noremap**  |     `buffer`     | 关闭当前`buffer` 不保存      |                              **:q\<CR\>**                              |
 |            **R**            | **noremap**  |     `rnvim`      | 触发`rnvim`                  | **\<silent\> :RnvimrToggle\<CR\>\<C-\\\>\<C-n\>:RnvimrResize 0\<CR\>** |
 |            **S**            | **noremap**  |     `buffer`     | 保存当前`buffer`             |                              **:w\<CR\>**                              |
+|            **S**            | **vmap**     |    `surround`    | S `包含的字符`               |                      **S\<p class="important"\>**                      |
 |            **T**            | **nmap**     |      `coc`       | 文件浏览                     |                     **:CocCommand explorer\<CR\>**                     |
 |            **Y**            | **noremap**  |      `copy`      | 从当前位置复制到行尾         |                                 **y$**                                 |
 |            **Y**            | **vnoremap** |      `copy`      | 复制到系统剪切板             |                                **"+y**                                 |
+|           **cs**            | **nmap**     |    `surround`    | cs `要替换` `替换后`         |        **cs"\</q>** `"Hello world!"` -\> `<q>Hello world!</q>`         |
+|           **cst**           | **nmap**     |    `surround`    | cst `替换后`                 |          **cst"** `<q>Hello world!</q>` -\> `"Hello world!"`           |
+|           **ds**            | **nmap**     |    `surround`    | ds `要移除`                  |              **ds"** `"Hello world!"` -\> `Hello world!`               |
 |           **gd**            | **nmap**     |      `coc`       | 跳转定义                     |                      **\<Plug\>(coc-definition)**                      |
 |           **gD**            | **nmap**     |      `coc`       | 跳转定义右侧打开新的`buffer` |               **:tab sp\<CR\>\<Plug\>(coc-definition)**                |
 |           **gy**            | **nmap**     |      `coc`       | 跳转类型定义                 |                   **\<Plug\>(coc-type-definition)**                    |
@@ -184,6 +188,8 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 |           **gr**            | **nmap**     |      `coc`       | 跳转引用                     |                      **\<Plug\>(coc-references)**                      |
 |           **ts**            | **nmap**     |      `coc`       | 翻译                         |                     **\<Plug\>(coc-translator-p)**                     |
 |           **rn**            | **nmap**     |      `coc`       | 重命名                       |                        **\<Plug\>(coc-rename)**                        |
+|          **ysiw**           | **nmap**     |    `surround`    | ysiw `增加`                  |            **ysiw]**   `Hello world!` -\> `[Hello] world!`             |
+|           **yss**           | **nmap**     |    `surround`    | yss `增加`                   |           **yss)**   `[Hello] world!` -\> `([Hello] world!)`           |
 |           **\\s**           | **noremap**  |                  | 全局查找替换                 |                  **:%s///g\<left\>\<left\>\<left\>**                   |
 |           **\\v**           | **noremap**  |                  | 进入`Visual`模式，选中到行尾 |                           **\<silent\> v$h**                           |
 |         **\<UP\>**          | **noremap**  |                  | 屏幕向上移动5个单位          |                           **:res +5\<CR\>**                            |
@@ -212,7 +218,7 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 |      **\<LEADER\>bf**       | **noremap**  |     `buffer`     | `buffer`关闭除了第一个       |                              **\<C-w\>o**                              |
 |      **\<LEADER\>cr**       | **noremap**  |      `call`      | 运行当前文件                 |                  **:call CompileRunFileType()\<CR\>**                  |
 |      **\<LEADER\>cs**       | **noremap**  |      `call`      | 打印选中所属组信息           |                       **:call SynGroup()\<CR\>**                       |
-|      **\<LEADER\>dw**       | **noremap**  |                  | 相邻的重复词                 |                    **/\\(\\\<\\w\\+\\\>\)\\_s\*\\1**                     |
+|      **\<LEADER\>dw**       | **noremap**  |                  | 相邻的重复词                 |                   **/\\(\\\<\\w\\+\\\>\)\\_s\*\\1**                    |
 |      **\<LEADER\>en**       | **noremap**  |      `edit`      | 跳转到下一个\<++\>位置并编辑 |              **\<Esc\>/\<++\>\<CR\>:nohlsearch\<CR\>c41**              |
 |      **\<LEADER\>fb**       | **noremap**  |      `fzf`       | 显示打开的缓冲区             |                     **\<silent\> :Buffers\<CR\>**                      |
 |      **\<LEADER\>fd**       | **noremap**  |      `fzf`       | 显示打开的缓冲区选择要关闭的 |                             **:BD\<CR\>**                              |

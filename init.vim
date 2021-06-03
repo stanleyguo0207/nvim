@@ -803,7 +803,16 @@ vmap <LEADER>tu g<
 "
 " vim-surround
 "
-" type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
+" cs"' inside "Hello world!" to change it to 'Hello world!'
+" cs'<q> to change it to <q>Hello world!</q>
+" cst" to get "Hello world!"
+" ds" Hello world!
+" ysiw] [Hello] world!
+"  yss) ([Hello] world!)
+" press a capital V (for linewise visual mode) followed by S<p class="important">.
+" <p class="important">
+"  <em>Hello</em> world!
+" </p>
 
 "
 " wildfire.vim
