@@ -1,3 +1,5 @@
+<center><img src="https://gitee.com/stanleyguo0207/nvim/raw/master/doc/assets/show.png"></center>
+
 目录
 ---
 
