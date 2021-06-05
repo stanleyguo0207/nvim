@@ -90,6 +90,11 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 -   [fzf](https://github.com/junegunn/fzf)
 -   [fzf.vim](https://github.com/junegunn/fzf.vim)
 -   [LeaderF](https://github.com/Yggdroot/LeaderF)
+
+    文件搜索
+
+    <img alt="Gif" src="https://gitee.com/stanleyguo0207/nvim/raw/master/doc/assets/LeaderF.nvim.gif"/>
+
 -   [rnvimr](https://github.com/kevinhwang91/rnvimr)
 -   [vista.vim](https://github.com/liuchengxu/vista.vim)
 -   [coc.nvim](https://github.com/neoclide/coc.nvim)
