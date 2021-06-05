@@ -7,7 +7,6 @@
   - [开发环境](#开发环境)
   - [插件列表](#插件列表)
   - [键位设置](#键位设置)
-  - [效果展示](#效果展示)
 
 # NeoVim配置文档
 
@@ -94,6 +93,11 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 -   [rnvimr](https://github.com/kevinhwang91/rnvimr)
 -   [vista.vim](https://github.com/liuchengxu/vista.vim)
 -   [coc.nvim](https://github.com/neoclide/coc.nvim)
+    
+    智能提示，补全，挑战。
+
+    <img alt="Gif" src="https://gitee.com/stanleyguo0207/nvim/raw/master/doc/assets/coc.nvim.gif"/>
+
 -   [tmux-complete.vim](https://github.com/wellle/tmux-complete.vim)
 -   [undotree](https://github.com/mbbill/undotree)
 -   [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
@@ -298,5 +302,3 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 | **\<C-k\>** | **tnoremap** |   `coc`    | 跳转到上一个补全位置 |        **coc_snippet_prev**        |
 | **\<C-N\>** | **tnoremap** |            |                      |                                    |
 | **\<C-O\>** | **tnoremap** |            |                      |                                    |
-
-## 效果展示
