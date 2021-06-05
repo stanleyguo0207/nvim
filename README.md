@@ -89,6 +89,11 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 -   [vim-illuminate](https://github.com/RRethy/vim-illuminate)
 -   [fzf](https://github.com/junegunn/fzf)
 -   [fzf.vim](https://github.com/junegunn/fzf.vim)
+
+    模糊搜索
+
+    <img alt="Gif" src="https://gitee.com/stanleyguo0207/nvim/raw/master/doc/assets/fzf.nvim.gif"/>
+
 -   [LeaderF](https://github.com/Yggdroot/LeaderF)
 
     文件搜索
@@ -96,6 +101,11 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
     <img alt="Gif" src="https://gitee.com/stanleyguo0207/nvim/raw/master/doc/assets/LeaderF.nvim.gif"/>
 
 -   [rnvimr](https://github.com/kevinhwang91/rnvimr)
+
+    ranger 文件管理GUI
+
+    <img alt="Gif" src="https://gitee.com/stanleyguo0207/nvim/raw/master/doc/assets/rnvimr.nvim.gif"/>
+
 -   [vista.vim](https://github.com/liuchengxu/vista.vim)
 -   [coc.nvim](https://github.com/neoclide/coc.nvim)
     
