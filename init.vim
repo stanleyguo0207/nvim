@@ -53,7 +53,10 @@ Plug 'https://gitee.com/stanleyguo0207/vista.vim'
 Plug 'https://gitee.com/stanleyguo0207/coc.nvim', {'branch': 'release'}
 Plug 'https://gitee.com/stanleyguo0207/tmux-complete.vim'
 
-" Undo tree
+" Highlight
+Plug 'https://gitee.com/stanleyguo0207/vim-lsp-cxx-highlight.git'
+
+"cUndo tree
 Plug 'https://gitee.com/stanleyguo0207/undotree'
 
 " Git
