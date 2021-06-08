@@ -1,17 +1,36 @@
 {
 	"coc.preferences.snippetStatusText": "Ⓢ ",
+	"coc.preferences.formatOnSaveFiletypes": [
+		"json",
+		"python"
+	],
 	"snippets.extends": {
-		"cpp": ["c"]
+		"cpp": [
+			"c"
+		]
 	},
 	"snippets.ultisnips.directories": [
 		"$HOME/.config/nvim/snippets/"
 	],
 	"snippets.snipmate.author": "stanleyguo0207",
+	"python.pythonPath": "python3",
 	"languageserver": {
 		"ccls": {
 			"command": "ccls",
-			"filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
-			"rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+			"filetypes": [
+				"c",
+				"cc",
+				"cpp",
+				"c++",
+				"objc",
+				"objcpp"
+			],
+			"rootPatterns": [
+				".ccls",
+				"compile_commands.json",
+				".git/",
+				".hg/"
+			],
 			"initializationOptions": {
 				"cache": {
 					"directory": "/tmp/ccls"
@@ -21,24 +40,32 @@
 						"-std=c++17"
 					]
 				},
-				"highlight": { "lsRanges": true }
+				"highlight": {
+					"lsRanges": true
+				}
 			}
 		},
 		"bash": {
 			"command": "bash-language-server",
-			"args": ["start"],
-			"filetypes": ["sh"],
+			"args": [
+				"start"
+			],
+			"filetypes": [
+				"sh"
+			],
 			"ignoredRootPaths": []
 		},
 		"cmake": {
 			"command": "cmake-language-server",
-			"filetypes": ["cmake"],
+			"filetypes": [
+				"cmake"
+			],
 			"rootPatterns": [
 				"build/"
 			],
 			"initializationOptions": {
 				"buildDirectory": "build"
 			}
-    	}
+		}
 	}
 }

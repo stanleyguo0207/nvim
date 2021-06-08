@@ -562,6 +562,7 @@ noremap <C-t> :silent! Vista finder coc<CR>
 "
 
 let g:coc_global_extensions = [
+	\ 'coc-pyright',
 	\ 'coc-diagnostic',
 	\ 'coc-explorer',
 	\ 'coc-json',
