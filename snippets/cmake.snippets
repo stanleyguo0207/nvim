@@ -127,14 +127,15 @@ snippet catch
 	project(test_${2:module_name} ${3:CXX})
 
 	add_executable(test_$2
-		"test_include.h"
-		"test_main.cpp"
+		"../../test_include.h"
+		"../../test_main.cpp"
 		"test_${4:$2}.cpp"
 	)
 	target_link_libraries(test_$2
 		Catch2::Catch2
 		${0}
 	)
+	install(TARGETS test_$2 DESTINATION ${BIN_DIR}/tests)
 	include(CTest)
-	include(ParseAndAddCatchTests)
-	ParseAndAddCatchTests(test_$2)
+	include(Catch)
+	catch_discover_tests(test_$2)
