@@ -135,7 +135,7 @@ snippet catch
 		Catch2::Catch2
 		${0}
 	)
-	install(TARGETS test_$2 DESTINATION ${BIN_DIR}/tests)
+	install(TARGETS test_$2 DESTINATION \${BIN_DIR}/tests)
 	include(CTest)
 	include(Catch)
 	catch_discover_tests(test_$2)

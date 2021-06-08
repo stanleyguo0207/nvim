@@ -866,8 +866,9 @@ let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']
 let g:asynctasks_config_name = '.asynctask'
 let g:asynctasks_rtp_config = "asynctasks.ini"
 noremap <silent><F3> :AsyncTask grep<CR>
-noremap <silent><F6> :AsyncTask project-build<CR>
-noremap <silent><F7> :AsyncTask project-compile<CR>
+noremap <silent><F6> :AsyncTask project-generate<CR>
+noremap <silent><F7> :AsyncTask project-build<CR>
+noremap <silent><F8> :AsyncTask project-install<CR>
 
 "
 " asyncrun
