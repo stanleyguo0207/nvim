@@ -510,6 +510,7 @@ func! RipgrepFzf(query, fullscreen)
 endfunc
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+noremap <silent> <F4> :RG<CR>
 
 "
 " LeaderF
