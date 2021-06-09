@@ -496,6 +496,7 @@ let g:Lf_PreviewInPopup = 1
 let g:Lf_PreviewCode = 1
 let g:Lf_ShowHidden = 1
 let g:Lf_ShowDevIcons = 1
+let g:Lf_WorkingDirectoryMode = 'Ac'
 " Find file current directory
 nnoremap <C-p> :Leaderf file<CR>
 
