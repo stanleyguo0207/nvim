@@ -4,9 +4,9 @@
 ---
 
 - [NeoVim配置文档](#neovim配置文档)
-  - [开发环境](#开发环境)
-  - [插件列表](#插件列表)
-  - [键位设置](#键位设置)
+	- [开发环境](#开发环境)
+	- [插件列表](#插件列表)
+	- [键位设置](#键位设置)
 
 # NeoVim配置文档
 
@@ -219,6 +219,11 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 |         **\<TAB\>**         | **inoremap** |       `coc`        | 弹出snippets窗口 向下移动    |                       **\<silent\>\<expr\>** ...                       |
 |        **\<S-TAB\>**        | **inoremap** |       `coc`        | snippets窗口提示窗口向上     |                                  ...                                   |
 |         **\<CR\>**          | **inoremap** |       `coc`        | 确定补全方案                 |                       **\<silent\>\<expr\>**...                        |
+|         **\<F3\>**          | **noremap**  |    `AsyncTask`     | 项目中搜索关键词             |                  **\<silent\>:AsyncTask grep\<CR\>**                   |
+|         **\<F4\>**          | **noremap**  |        `Rg`        | 项目中搜索关键词             |                        **\<silent\>:RG\<CR\>**                         |
+|         **\<F6\>**          | **noremap**  |    `AsyncTask`     | 项目生成异步任务             |            **\<silent\>:AsyncTask project-generate\<CR\>**             |
+|         **\<F7\>**          | **noremap**  |    `AsyncTask`     | 确定构建异步任务             |              **\<silent\>:AsyncTask project-build\<CR\>**              |
+|         **\<F8\>**          | **noremap**  |    `AsyncTask`     | 确定安装异步任务             |             **\<silent\>:AsyncTask project-install\<CR\>**             |
 |         **\<C-a\>**         | **inoremap** |                    | 光标移动到行尾               |                              **\<ESC\>A**                              |
 |         **\<C-c\>**         | **noremap**  |                    | 屏幕居中到当前行             |                                 **zz**                                 |
 |         **\<C-f\>**         | **noremap**  |       `fzf`        | 正则表达式查找               |                        **\<silent\> :Rg\<CR\>**                        |
