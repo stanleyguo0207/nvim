@@ -45,6 +45,7 @@ Plug 'https://gitee.com/stanleyguo0207/fzf.vim'
 Plug 'https://gitee.com/stanleyguo0207/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'https://gitee.com/stanleyguo0207/rnvimr'
 Plug 'https://gitee.com/stanleyguo0207/any-jump.vim'
+Plug 'https://gitee.com/stanleyguo0207/vim-rooter'
 
 " Symbols and tags
 Plug 'https://gitee.com/stanleyguo0207/vista.vim'
@@ -487,6 +488,25 @@ command! BD call fzf#run(fzf#wrap({
 
 " Show buffers whitch will be delete
 noremap <LEADER>fd :BD<CR>
+
+" vim-rooter
+let g:rooter_patterns = [".git"]
+let g:rooter_cd_cmd="lcd"
+let g:rooter_manual_only = 1
+let g:rooter_silent_chdir = 1
+
+func! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {
+		\ 'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command],
+		\ 'dir': FindRootDirectory()
+		\ }
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunc
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
 "
 " LeaderF
