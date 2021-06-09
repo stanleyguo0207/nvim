@@ -864,8 +864,8 @@ let g:far#mapping = {
 
 let g:asyncrun_open = 6
 let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']
-let g:asynctasks_config_name = '.asynctask'
-let g:asynctasks_rtp_config = "asynctasks.ini"
+let g:asynctasks_config_name = ".asynctask"
+let g:asynctasks_rtp_config = ".asynctasks"
 noremap <silent><F3> :AsyncTask grep<CR>
 noremap <silent><F6> :AsyncTask project-generate<CR>
 noremap <silent><F7> :AsyncTask project-build<CR>
