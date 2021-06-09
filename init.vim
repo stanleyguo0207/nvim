@@ -490,7 +490,7 @@ command! BD call fzf#run(fzf#wrap({
 noremap <LEADER>fd :BD<CR>
 
 " vim-rooter
-let g:rooter_patterns = [".git"]
+let g:rooter_patterns = [".vim-workspace", ".git/"]
 let g:rooter_cd_cmd="lcd"
 let g:rooter_manual_only = 1
 let g:rooter_silent_chdir = 1
