@@ -2,6 +2,7 @@
 	"coc.preferences.snippetStatusText": "Ⓢ ",
 	"coc.preferences.formatOnSaveFiletypes": [
 		"json",
+		"jsonc",
 		"python"
 	],
 	"snippets.extends": {
@@ -14,6 +15,7 @@
 	],
 	"snippets.snipmate.author": "stanleyguo0207",
 	"python.pythonPath": "python3",
+	"json.format.enable": true,
 	"languageserver": {
 		"ccls": {
 			"command": "ccls",

@@ -107,6 +107,9 @@ Plug 'https://gitee.com/stanleyguo0207/asyncrun.vim'
 " Applications
 Plug 'https://gitee.com/stanleyguo0207/calendar.vim'
 
+" Json
+Plug 'https://gitee.com/stanleyguo0207/jsonc.vim'
+
 call plug#end()
 
 "
@@ -670,6 +673,8 @@ let g:coc_snippet_next = "<C-j>"
 let g:coc_snippet_prev = "<C-k>"
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 xmap <leader>xsn  <Plug>(coc-convert-snippet)
+" jsonc
+autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
 "
 " undotree
