@@ -6,6 +6,16 @@ snippet inc
 	#include <${1:iostream>}
 
 ##
+# std::string
+snippet str
+	std::string ${1};
+
+##
+# std::string_view
+snippet strv
+	std::string_view ${1};
+
+##
 # std::array
 snippet array
 	std::array<${1:T}, ${2:N}> ${3};
@@ -131,7 +141,7 @@ snippet mu
 ##
 # namespace
 snippet ns
-	namespace ${1:`vim_snippets#Filename('', 'my')`} {
+	namespace ${1:`utility#Filename('', 'my')`} {
 		${0}
 	} // $1
 
