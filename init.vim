@@ -1,4 +1,6 @@
-" Vim options
+" Author: stanleyguo0207@163.com
+
+" vimdoc options
 " http://vimdoc.sourceforge.net/htmldoc/options.html
 
 "
@@ -673,7 +675,7 @@ vmap <C-j> <Plug>(coc-snippets-select)
 let g:coc_snippet_next = "<C-j>"
 let g:coc_snippet_prev = "<C-k>"
 imap <C-j> <Plug>(coc-snippets-expand-jump)
-xmap <leader>xsn  <Plug>(coc-convert-snippet)
+xmap <leader>xcn  <Plug>(coc-convert-snippet)
 " jsonc
 autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
