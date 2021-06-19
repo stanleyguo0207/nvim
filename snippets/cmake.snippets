@@ -131,10 +131,20 @@ snippet catch
 		"../../test_main.cpp"
 		"test_${4:$2}.cpp"
 	)
+
+	set_property(TARGET
+		test_$2
+		APPEND
+		PROPERTY
+			COMPILE_DEFINITIONS
+			${5}
+	)
+
 	target_link_libraries(test_$2
 		Catch2::Catch2
 		${0}
 	)
+
 	install(TARGETS test_$2 DESTINATION \${BIN_DIR}/tests)
 	include(CTest)
 	include(Catch)
