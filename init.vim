@@ -112,6 +112,9 @@ Plug 'https://gitee.com/stanleyguo0207/calendar.vim'
 " Json
 Plug 'https://gitee.com/stanleyguo0207/jsonc.vim'
 
+" Editorconfig
+Plug 'https://gitee.com/stanleyguo0207/editorconfig-vim'
+
 call plug#end()
 
 "
@@ -929,6 +932,11 @@ augroup calendar-mappings
 	autocmd FileType calendar nunmap <buffer> <C-n>
 	autocmd FileType calendar nunmap <buffer> <C-p>
 augroup END
+
+"
+" editorconfig
+"
+let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
 
 "
 " open
