@@ -267,8 +267,8 @@ noremap <LEADER><CR> :nohlsearch<CR>
 noremap <LEADER>dw /\(\<\w\+\>\)\_s*\1
 
 " Space to Tab
-nnoremap <LEADER>tt :%s/    /\t/g
-vnoremap <LEADER>tt :s/    /\t/g
+nnoremap <LEADER>tt :%s/  /\t/g
+vnoremap <LEADER>tt :s/  /\t/g
 
 " Folding
 noremap <silent> <LEADER>za za
@@ -936,6 +936,7 @@ augroup END
 "
 " editorconfig
 "
+
 let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
 
 "
