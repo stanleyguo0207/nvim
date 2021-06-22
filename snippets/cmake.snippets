@@ -175,34 +175,34 @@ snippet module
 
 	# collect source
 	CollectSourceFiles(
-		${CMAKE_CURRENT_SOURCE_DIR}
+		${CMAKE_CURRENT_SOURCE_DIR\}
 		PRIVATE_SOURCES
 		# Exclude
-		${CMAKE_CURRENT_SOURCE_DIR}/pch
+		${CMAKE_CURRENT_SOURCE_DIR\}/pch
 		)
 
 	# collect include
 	CollectIncludeDirectories(
-		${CMAKE_CURRENT_SOURCE_DIR}
+		${CMAKE_CURRENT_SOURCE_DIR\}
 		PUBLIC_INCLUDES
 		# Exclude
-		${CMAKE_CURRENT_SOURCE_DIR}/pch
+		${CMAKE_CURRENT_SOURCE_DIR\}/pch
 		)
 
 	# source tree
-	GroupSources(${CMAKE_CURRENT_SOURCE_DIR})
+	GroupSources(${CMAKE_CURRENT_SOURCE_DIR\})
 
 	# library $1
 	add_library(${1:moudle_name}
-		${PRIVATE_SOURCES}
+		${PRIVATE_SOURCES\}
 		)
 
 	# include
 	target_include_directories($1
 		PRIVATE
-			${CMAKE_CURRENT_BINARY_DIR}
+			${CMAKE_CURRENT_BINARY_DIR\}
 		PUBLIC
-			${PUBLIC_INCLUDES}
+			${PUBLIC_INCLUDES\}
 		)
 
 	# link
@@ -214,7 +214,7 @@ snippet module
 		)
 
 	# export
-	add_definitions(-DTPN_API_EXPORT_${2:$1}})
+	add_definitions(-DTPN_API_EXPORT_${2:$1})
 
 	# ide folder
 	set_target_properties($1
@@ -229,7 +229,7 @@ snippet module
 			$1
 			LIBRARY
 				DESTINATION
-					${BIN_DIR}/lib
+					${BIN_DIR\}/lib
 			)
 	endif()
 
@@ -237,6 +237,91 @@ snippet module
 	if(USE_COREPCH)
 		target_precompile_headers($1
 			PRIVATE
-				${CMAKE_CURRENT_SOURCE_DIR}/pch/pch_$1.h
+				${CMAKE_CURRENT_SOURCE_DIR\}/pch/pch_$1.h
+			)
+	endif()
+
+snippet exec
+	#
+	#           ┌┬┐┬ ┬┌─┐┬ ┬┌─┐┌─┐┌┐┌
+	#            │ └┬┘├─┘├─┤│ ││ ││││
+	#            ┴  ┴ ┴  ┴ ┴└─┘└─┘┘└┘
+	#
+	# This file is part of the typhoon Project.
+	# Copyright (C) 2021 stanley0207@163.com
+	#
+	# This program is free software: you can redistribute it and/or modify
+	# it under the terms of the GNU General Public License as published by
+	# the Free Software Foundation, either version 3 of the License, or
+	# (at your option) any later version.
+	#
+	# This program is distributed in the hope that it will be useful,
+	# but WITHOUT ANY WARRANTY; without even the implied warranty of
+	# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	# GNU General Public License for more details.
+	#
+	# You should have received a copy of the GNU General Public License
+	# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	#
+
+	# collect source
+	CollectSourceFiles(
+		${CMAKE_CURRENT_SOURCE_DIR\}
+		PRIVATE_SOURCES
+		# Exclude
+		${CMAKE_CURRENT_SOURCE_DIR\}/pch
+		)
+
+	# collect include
+	CollectIncludeDirectories(
+		${CMAKE_CURRENT_SOURCE_DIR\}
+		PUBLIC_INCLUDES
+		# Exclude
+		${CMAKE_CURRENT_SOURCE_DIR\}/pch
+		)
+
+	# source tree
+	GroupSources(${CMAKE_CURRENT_SOURCE_DIR\})
+
+	# executable $1
+	add_executable(${1:moudle_name}
+		${PRIVATE_SOURCES\}
+		)
+
+	# include
+	target_include_directories($1
+		PRIVATE
+			${CMAKE_CURRENT_BINARY_DIR\}
+		PUBLIC
+			${PUBLIC_INCLUDES\}
+		)
+
+	# link
+	target_link_libraries($1
+		PRIVATE
+			typhoon-core-interface
+		PUBLIC
+			$0
+		)
+
+	# ide folder
+	set_target_properties($1
+		PROPERTIES
+			FOLDER
+				"${2:server}"
+		)
+
+	# install
+	install(TARGETS
+		$1
+			DESTINATION
+				${BIN_DIR\}
+		)
+
+	# pch
+	if(USE_COREPCH)
+		target_precompile_headers($1
+			PRIVATE
+				${CMAKE_CURRENT_SOURCE_DIR\}/pch/pch_$1.h
 			)
 	endif()

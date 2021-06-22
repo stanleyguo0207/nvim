@@ -40,7 +40,19 @@
 				"clang": {
 					"extraArgs": [
 						"-std=c++2a",
-						"-Wformat=2"
+						"-Wformat=2",
+						"-Wall",
+						"-Wextra",
+						"-pedantic",
+						"-Wconversion",
+						"-Wundef",
+						"-Wdeprecated",
+						"-Wweak",
+						"-vtables",
+						"-Wshadow",
+						"-Wno-gnu-zero-variadic-macro-arguments",
+						"-Wzero-as-null-pointer-constant",
+						"-Werror"
 					]
 				},
 				"highlight": {
