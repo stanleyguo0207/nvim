@@ -598,8 +598,7 @@ let g:coc_global_extensions = [
 	\ 'coc-json',
 	\ 'coc-lists',
 	\ 'coc-translator',
-	\ 'coc-snippets',
-	\ 'coc-git']
+	\ 'coc-snippets']
 inoremap <silent><expr> <TAB>
 	\ pumvisible() ? "\<C-n>" :
 	\ <SID>check_back_space() ? "\<TAB>" :

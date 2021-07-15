@@ -40,19 +40,22 @@
 				"clang": {
 					"extraArgs": [
 						"-std=c++2a",
-						"-Wformat=2",
+						"-pedantic",
+						"-vtables",
+						"-W",
 						"-Wall",
 						"-Wextra",
-						"-pedantic",
-						"-Wconversion",
-						"-Wundef",
-						"-Wdeprecated",
-						"-Wweak",
-						"-vtables",
-						"-Wshadow",
-						"-Wno-gnu-zero-variadic-macro-arguments",
+						"-Winit-self",
+						"-Werror",
+						"-Wfatal-errors",
 						"-Wzero-as-null-pointer-constant",
-						"-Werror"
+						"-Wformat=2",
+						"-Wundef",
+						"-Wweak",
+						"-Wno-narrowing",
+						"-Wno-mismatched-tags",
+						"-Wno-deprecated-register",
+						"-Wno-gnu-zero-variadic-macro-arguments"
 					]
 				},
 				"highlight": {
