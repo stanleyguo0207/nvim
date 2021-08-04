@@ -4,9 +4,9 @@
 ---
 
 - [NeoVim配置文档](#neovim配置文档)
-	- [开发环境](#开发环境)
-	- [插件列表](#插件列表)
-	- [键位设置](#键位设置)
+  - [开发环境](#开发环境)
+  - [插件列表](#插件列表)
+  - [键位设置](#键位设置)
 
 # NeoVim配置文档
 
@@ -238,6 +238,7 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 |       **\<LEADER\>;**       | **noremap**  |       `fzf`        | 历史记录                     |                     **\<silent\> :History\<CR\>**                      |
 |       **\<LEADER\>-**       | **nmap**     |       `coc`        | 诊断错误位置向前             |                   **\<Plug\>(coc-diagnostic-prev)**                    |
 |       **\<LEADER\>=**       | **nmap**     |       `coc`        | 诊断错误位置向后             |                   **\<Plug\>(coc-diagnostic-next)**                    |
+|       **\<LEADER\>q**       | **noremap**  |      `buffer`      | 关闭当前`buffer` 下方的窗口  |                          **\<C-w\>j:q\<CR\>**                          |
 |    **\<LEADER\>\<CR\>**     | **noremap**  |                    | 关闭搜索高亮显示             |                         **:nohlsearch\<CR\>**                          |
 |      **\<LEADER\>aj**       | **noremap**  |     `any-jump`     | 跳转                         |                           **:AnyJump\<CR\>**                           |
 |      **\<LEADER\>ab**       | **noremap**  |     `any-jump`     | 回跳                         |                         **:AnyJumpBack\<CR\>**                         |

@@ -230,6 +230,8 @@ noremap S :w<CR>
 " Buffer
 "
 
+" Shutdown below buffer
+noremap <LEADER>q <C-w>j:q<CR>
 " Shutdown current buffer
 noremap <LEADER>bq :q<CR>
 " Shutdown all buffer
