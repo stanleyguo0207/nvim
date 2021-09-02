@@ -367,6 +367,7 @@ noremap <LEADER><LEADER>pf :r !figlet
 
 " Find and replace
 noremap \s :%s///g<left><left><left>
+xmap \s :s///g<left><left><left>
 
 " Show hlgroup
 func! SynGroup()
