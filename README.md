@@ -211,7 +211,7 @@ https://gitee.com/stanleyguo0207/configs/blob/master/linux/manjaro/manjaro.md
 |          **ysiw**           | **nmap**     |     `surround`     | ysiw `增加`                  |            **ysiw]**   `Hello world!` -\> `[Hello] world!`             |
 |           **yss**           | **nmap**     |     `surround`     | yss `增加`                   |           **yss)**   `[Hello] world!` -\> `([Hello] world!)`           |
 |           **\\s**           | **noremap**  |                    | 全局查找替换                 |                  **:%s///g\<left\>\<left\>\<left\>**                   |
-|           **\\s**           | xmap**     |                    | 范围查找替换                 |                  **:s///g\<left\>\<left\>\<left\>* *                  |
+|           **\\s**           | xmap**     |                    | 范围查找替换                 |                  **:s///g\<left\>\<left\>\<left\>*                    |
 |           **\\v**           | **noremap**  |                    | 进入`Visual`模式，选中到行尾 |                           **\<silent\> v$h**                           |
 |         **\<UP\>**          | **noremap**  |                    | 屏幕向上移动5个单位          |                           **:res +5\<CR\>**                            |
 |        **\<DOWN\>**         | **noremap**  |                    | 屏幕向下移动5个单位          |                           **:res -5\<CR\>**                            |
